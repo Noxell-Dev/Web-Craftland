@@ -99,7 +99,7 @@ export const t = {
       { value: '+50', label: 'jugadores diarios', count: 50 },
       { value: '24/7', label: 'servidor online' },
       { value: '3', label: 'modalidades', count: 3 },
-    ],
+    ] as { value: string; label: string; count?: number }[],
   },
 
   faq: {
