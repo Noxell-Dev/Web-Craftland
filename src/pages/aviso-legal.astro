@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+import { t } from '../i18n/es';
+
+const title = `Aviso legal — ${site.name}`;
+const description = `Aviso legal y condiciones de uso de la web de ${site.name}, servidor de Minecraft.`;
+---
+
+<BaseLayout title={title} description={description} path="/aviso-legal">
+  <section class="bg-night-900 py-20 sm:py-28">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <h1 class="font-display text-3xl tracking-wide sm:text-4xl">Aviso legal</h1>
+
+      <div class="mt-8 space-y-6 leading-relaxed text-mist-400">
+        <div>
+          <h2 class="font-display text-xl text-mist-50">1. Titular de la web</h2>
+          <p class="mt-2">
+            En cumplimiento de la Ley 34/2002 (LSSI), se informa de los datos identificativos del titular:
+          </p>
+          <ul class="mt-3 list-disc space-y-1 pl-6">
+            <li><strong>Denominación:</strong> {site.name}</li>
+            <li><strong>Email de contacto:</strong> a través del <a href={site.discordUrl} rel="noopener" class="text-grape-300 underline underline-offset-4">Discord oficial</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-display text-xl text-mist-50">2. Objeto</h2>
+          <p class="mt-2">
+            Esta web informa sobre el servidor de Minecraft {site.name}: modalidades, forma de acceso y
+            comunidad. No se realizan ventas a través de la web.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-xl text-mist-50">3. Propiedad intelectual</h2>
+          <p class="mt-2">
+            Los contenidos de esta web son propiedad de su titular o de terceros que han autorizado su
+            uso. {site.name} no está afiliado a Mojang Studios ni a Microsoft; Minecraft es una marca de
+            Mojang Studios.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-xl text-mist-50">4. Protección de datos</h2>
+          <p class="mt-2">
+            Esta web no recoge datos personales ni utiliza cookies de seguimiento.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

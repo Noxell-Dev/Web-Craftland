@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/* Identidad visual de Craftland (del análisis del logo):
+   base noche #0D0D0F, paneles #17171D, morado de marca #8A2BE2
+   (override del anti-default: el morado ES el color del logo),
+   verde estado #33CC33 para "online". Tipos: Lilita One (display
+   redondeada blocky, como las letras 3D del logo) + Rubik (cuerpo). */
+
+@theme {
+  --color-night-950: #0a0a0c;
+  --color-night-900: #0d0d0f;
+  --color-night-800: #17171d;
+  --color-night-700: #1f1f28;
+  --color-night-600: #2b2b36;
+
+  --color-grape-300: #d94fff;
+  --color-grape-400: #b44df0;
+  --color-grape-500: #8a2be2;
+  --color-grape-600: #6a1fc0;
+  --color-grape-700: #531299;
+
+  --color-lime-online: #33cc33;
+
+  --color-mist-50: #f5f5f7;
+  --color-mist-200: #dcd6ea;
+  --color-mist-400: #a99fc2;
+  --color-mist-500: #8c82a0;
+
+  --font-display: "Lilita One", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --font-sans: "Rubik", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--color-night-900);
+  color: var(--color-mist-50);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-grape-500);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-grape-400);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Retícula fantasma de bloques (referencia blocky, sutil) */
+.blocky-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Borde de bloque estilo Minecraft: esquinas recortadas */
+.block-border {
+  --bb: 10px;
+  clip-path: polygon(
+    var(--bb) 0, calc(100% - var(--bb)) 0, 100% var(--bb),
+    100% calc(100% - var(--bb)), calc(100% - var(--bb)) 100%,
+    var(--bb) 100%, 0 calc(100% - var(--bb)), 0 var(--bb)
+  );
+}
+
+/* Chip de IP estilo entrada de lista de servidores */
+.ip-chip {
+  background-color: rgba(0, 0, 0, 0.45);
+  border: 2px solid var(--color-grape-600);
+  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.35), 0 0 24px rgba(138, 43, 226, 0.18);
+}
+
+/* Botón con brillo gloss (como las letras del logo) */
+.btn-gloss {
+  position: relative;
+  overflow: hidden;
+}
+.btn-gloss::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 55% 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.22), transparent);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Acordeón accesible */
+[data-accordion-panel] {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 250ms ease-out;
+}
+[data-accordion-panel][data-open] {
+  grid-template-rows: 1fr;
+}
+[data-accordion-panel] > div {
+  overflow: hidden;
+}
+
+/* Revelado estándar noxell.dev */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+html:not(.js) .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Modes from '../components/Modes.astro';
+import HowTo from '../components/HowTo.astro';
+import Community from '../components/Community.astro';
+import Faq from '../components/Faq.astro';
+import { site } from '../data/site';
+
+const title = 'Craftland — Servidor de Minecraft Survival, Creativo y Skyblock';
+const description =
+  'Únete a Craftland: servidor de Minecraft Java compatible desde 1.8 hasta 1.26. Survival persistente, Creativo con WorldEdit y Skyblock. IP: play.craftlandmc.com.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Hero />
+  <Modes />
+  <HowTo />
+  <Community />
+  <Faq />
+</BaseLayout>
