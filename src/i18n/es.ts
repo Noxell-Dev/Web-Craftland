@@ -96,9 +96,9 @@ export const t = {
     discordDescription: 'Anuncios, soporte, eventos y gente con la que jugar. Nos vemos dentro.',
     discordCta: 'Entrar al Discord',
     stats: [
-      { value: '+50', label: 'jugadores diarios' },
+      { value: '+50', label: 'jugadores diarios', count: 50 },
       { value: '24/7', label: 'servidor online' },
-      { value: '3', label: 'modalidades' },
+      { value: '3', label: 'modalidades', count: 3 },
     ],
   },
 

@@ -90,7 +90,40 @@ function initCopyIp(): void {
   });
 }
 
+function initCountUp(): void {
+  const els = document.querySelectorAll<HTMLElement>('[data-count-up]');
+  if (!els.length) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return; // sin JS de conteo: el valor final ya está en el HTML
+  const animate = (el: HTMLElement): void => {
+    const target = Number(el.dataset.countUp ?? '0');
+    const prefix = el.dataset.countPrefix ?? '';
+    const duration = 1000;
+    const start = performance.now();
+    const tick = (now: number): void => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3); // ease-out cúbico
+      el.textContent = `${prefix}${Math.round(target * eased)}`;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animate(entry.target as HTMLElement);
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.4 },
+  );
+  els.forEach((el) => io.observe(el));
+}
+
 initMobileNav();
 initAccordion();
 initHeaderScroll();
 initCopyIp();
+initCountUp();

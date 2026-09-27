@@ -14,7 +14,14 @@ import { site } from '../data/site';
           {t.community.stats.map((stat) => (
             <div class="border-l-2 border-grape-600 pl-4">
               <dt class="order-2 mt-1 text-sm text-mist-500">{stat.label}</dt>
-              <dd class="font-display text-3xl text-grape-300">{stat.value}</dd>
+              <dd
+                class="font-display text-3xl text-grape-300"
+                {...(stat.count !== undefined
+                  ? { 'data-count-up': String(stat.count), 'data-count-prefix': stat.value.startsWith('+') ? '+' : '' }
+                  : {})}
+              >
+                {stat.value}
+              </dd>
             </div>
           ))}
         </dl>
