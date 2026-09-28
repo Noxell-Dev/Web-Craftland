@@ -168,3 +168,35 @@ html:not(.js) .reveal {
     transform: none;
   }
 }
+
+/* Glow de borde que sigue al cursor (port de React Bits BorderGlow a vanilla).
+   Solo brilla el tramo de borde cercano al puntero: --cursor-angle marca la
+   dirección y --edge-proximity la cercanía al borde. */
+.glow-card {
+  --edge-proximity: 0;
+  --cursor-angle: 45deg;
+  --glow-color: 268 90% 62%;
+}
+.glow-card .glow-edge {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: calc((var(--edge-proximity) - 25) / 75);
+  transition: opacity 300ms ease-out;
+  box-shadow:
+    inset 0 0 0 1px hsl(var(--glow-color) / 0.9),
+    inset 0 0 10px 1px hsl(var(--glow-color) / 0.4),
+    inset 0 0 28px 4px hsl(var(--glow-color) / 0.18);
+  -webkit-mask-image: conic-gradient(
+    from var(--cursor-angle) at center,
+    black 3%, transparent 13%, transparent 87%, black 97%
+  );
+  mask-image: conic-gradient(
+    from var(--cursor-angle) at center,
+    black 3%, transparent 13%, transparent 87%, black 97%
+  );
+}
+.glow-card:not(:hover) .glow-edge {
+  opacity: 0;
+  transition: opacity 750ms ease-in-out;
+}

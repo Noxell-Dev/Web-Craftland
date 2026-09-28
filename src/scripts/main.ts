@@ -127,3 +127,29 @@ initAccordion();
 initHeaderScroll();
 initCopyIp();
 initCountUp();
+
+/* Glow de borde que sigue al cursor (.glow-card) */
+function initBorderGlow(): void {
+  const cards = document.querySelectorAll<HTMLElement>('.glow-card');
+  cards.forEach((card) => {
+    card.addEventListener('pointermove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      // cercanía al borde (0 centro -> 1 borde)
+      const kx = x !== cx ? cx / Math.abs(x - cx) : Infinity;
+      const ky = y !== cy ? cy / Math.abs(y - cy) : Infinity;
+      const edge = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
+      let deg = (Math.atan2(y - cy, x - cx) * 180) / Math.PI + 90;
+      if (deg < 0) deg += 360;
+      card.style.setProperty('--edge-proximity', (edge * 100).toFixed(1));
+      card.style.setProperty('--cursor-angle', `${deg.toFixed(1)}deg`);
+    });
+    card.addEventListener('pointerleave', () => {
+      card.style.setProperty('--edge-proximity', '0');
+    });
+  });
+}
+initBorderGlow();
