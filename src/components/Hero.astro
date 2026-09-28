@@ -26,7 +26,7 @@ import { site } from '../data/site';
       alt="Logo de Craftland: jugador con antorcha sobre una isla flotante frente a un castillo"
       width="800"
       height="800"
-      class="hero-in w-40 rounded-full sm:w-52 md:w-60"
+      class="hero-in w-52 rounded-full sm:w-64 md:w-80"
       style="--hero-delay: 100ms"
       loading="eager"
       fetchpriority="high"
@@ -41,7 +41,7 @@ import { site } from '../data/site';
       {t.hero.overline}
     </p>
 
-    <h1 class="hero-in mt-4 max-w-2xl font-display text-4xl leading-[1.12] tracking-normal sm:text-5xl md:text-6xl" style="--hero-delay: 300ms">
+    <h1 class="hero-in mt-4 max-w-3xl font-display text-4xl leading-[1.08] tracking-wide uppercase sm:text-5xl md:text-7xl" style="--hero-delay: 300ms">
       {t.hero.titleTop}
       <span class="block text-grape-400 drop-shadow-[0_4px_0_rgba(83,18,153,0.7)]">{t.hero.titleAccent}</span>
       <span class="block">{t.hero.titleBottom}</span>
@@ -79,11 +79,18 @@ import { site } from '../data/site';
       </a>
     </div>
 
-    <!-- IP visible también como texto (para quien prefiere copiar a mano) -->
-    <p class="hero-in mt-6 font-mono text-sm font-semibold text-mist-300 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]" style="--hero-delay: 660ms">
-      <span class="text-mist-500 uppercase tracking-[0.15em] text-[11px]">{t.hero.ipLabel}</span>
-      <span class="mx-2 text-grape-400">{site.serverIp}</span>
-    </p>
+    <!-- IP visible también como texto: clic para copiar -->
+    <button
+      type="button"
+      class="hero-in mt-6 font-mono text-base font-semibold text-mist-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] transition-colors hover:text-white sm:text-lg"
+      style="--hero-delay: 660ms"
+      data-copy-ip={site.serverIp}
+      data-copied-label="¡IP copiada!"
+      aria-label={`Copiar IP ${site.serverIp}`}
+    >
+      <span class="text-mist-400 uppercase tracking-[0.15em] text-xs">{t.hero.ipLabel}</span>
+      <span data-copy-label class="mx-2 text-grape-300">{site.serverIp}</span>
+    </button>
   </div>
 
   <!-- Indicador de scroll -->

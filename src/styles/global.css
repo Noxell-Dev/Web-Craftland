@@ -26,7 +26,7 @@
   --color-mist-400: #a99fc2;
   --color-mist-500: #8c82a0;
 
-  --font-display: "Baloo 2", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --font-display: "Anton", "Arial Narrow Bold", "Impact", sans-serif;
   --font-sans: "Rubik", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
 }
