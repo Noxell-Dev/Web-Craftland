@@ -3,30 +3,44 @@ import { t } from '../i18n/es';
 import { site } from '../data/site';
 ---
 
-<section class="blocky-grid relative overflow-hidden bg-night-900 pt-32 pb-16 sm:pt-40 sm:pb-24">
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-    <div class="absolute -top-32 right-0 h-[28rem] w-[28rem] rounded-full bg-grape-500/12 blur-3xl"></div>
-    <div class="absolute bottom-0 -left-24 h-72 w-72 rounded-full bg-grape-700/15 blur-3xl"></div>
-  </div>
+<section class="relative flex min-h-[100svh] items-center overflow-hidden">
+  <!-- Foto real del lobby: fondo a sangre completa (elemento clave de la landing) -->
+  <img
+    src="/images/gallery/lobby-1.webp"
+    alt="Lobby de Craftland: castillo medieval con portal morado entre abetos"
+    width="1920"
+    height="1027"
+    class="absolute inset-0 h-full w-full object-cover"
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
+  />
+  <!-- Velo para legibilidad: suave arriba (que respire la foto), denso abajo -->
+  <div class="absolute inset-0 bg-gradient-to-b from-night-950/55 via-night-950/25 to-night-950/90" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(13,13,15,0.45)_100%)]" aria-hidden="true"></div>
 
-  <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr]">
+  <div class="relative mx-auto grid w-full max-w-6xl items-center gap-10 px-4 pt-32 pb-20 sm:px-6 lg:grid-cols-[1.15fr_0.85fr]">
     <div>
-      <p class="reveal font-mono text-xs font-semibold uppercase tracking-[0.2em] text-grape-300">
+      <p class="reveal flex items-center gap-2.5 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-grape-300">
+        <span class="relative flex h-2.5 w-2.5 shrink-0">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime-online opacity-75 motion-reduce:animate-none" aria-hidden="true"></span>
+          <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-lime-online shadow-[0_0_10px_rgba(51,204,51,0.8)]" aria-hidden="true"></span>
+        </span>
         {t.hero.overline}
       </p>
-      <h1 class="reveal mt-4 font-display text-5xl leading-[1.05] tracking-wide sm:text-6xl lg:text-7xl" style="--reveal-delay: 60ms">
+      <h1 class="reveal mt-4 font-display text-5xl leading-[1.05] tracking-wide drop-shadow-[0_3px_14px_rgba(0,0,0,0.85)] sm:text-6xl lg:text-7xl" style="--reveal-delay: 60ms">
         {t.hero.titleTop}
-        <span class="block text-grape-400 drop-shadow-[0_4px_0_rgba(83,18,153,0.6)]">{t.hero.titleAccent}</span>
+        <span class="block text-grape-400 drop-shadow-[0_4px_0_rgba(83,18,153,0.7)]">{t.hero.titleAccent}</span>
         <span class="block">{t.hero.titleBottom}</span>
       </h1>
-      <p class="reveal mt-6 max-w-xl text-lg leading-relaxed text-mist-400" style="--reveal-delay: 120ms">
+      <p class="reveal mt-6 max-w-xl text-lg leading-relaxed text-mist-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]" style="--reveal-delay: 120ms">
         {t.hero.subtitle}
       </p>
 
       <!-- IP: la entrada de lista de servidores (elemento memorable) -->
       <div class="reveal mt-8 max-w-md" style="--reveal-delay: 180ms">
-        <p class="mb-2 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-mist-500">{t.hero.ipLabel}</p>
-        <div class="ip-chip flex items-center gap-3 rounded-xl px-4 py-3">
+        <p class="mb-2 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-mist-400 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">{t.hero.ipLabel}</p>
+        <div class="ip-chip flex items-center gap-3 rounded-xl px-4 py-3 backdrop-blur-md">
           <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-lime-online shadow-[0_0_10px_rgba(51,204,51,0.8)]" aria-hidden="true"></span>
           <code class="flex-1 truncate font-mono text-base font-semibold text-mist-50">{t.hero.ipValue}</code>
           <button
@@ -45,7 +59,7 @@ import { site } from '../data/site';
         <a
           href={t.hero.secondaryCtaHref}
           rel="noopener"
-          class="inline-flex items-center gap-2 rounded-lg border border-grape-600 px-6 py-3 text-sm font-bold text-mist-50 transition-colors hover:border-grape-400 active:translate-y-px"
+          class="btn-gloss inline-flex items-center gap-2 rounded-lg border-2 border-grape-500/70 bg-night-950/40 px-6 py-3 text-sm font-bold text-mist-50 backdrop-blur-md transition-all hover:border-grape-400 hover:bg-grape-500/25 active:translate-y-px"
         >
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28c-1.69.28-3.35.77-4.93 1.51A20.26 20.26 0 0 0 .1 18.06a19.9 19.9 0 0 0 6.07 3.03c.49-.66.93-1.37 1.3-2.1a12.9 12.9 0 0 1-2.05-.98c.17-.12.34-.25.5-.38a14.2 14.2 0 0 0 12.16 0c.16.13.33.26.5.38-.65.39-1.34.71-2.05.98.37.73.81 1.44 1.3 2.1a19.84 19.84 0 0 0 6.07-3.03 20.2 20.2 0 0 0-3.58-13.69zM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42s.95-2.42 2.16-2.42 2.18 1.09 2.16 2.42c0 1.34-.95 2.42-2.16 2.42zm7.96 0c-1.18 0-2.16-1.08-2.16-2.42s.95-2.42 2.16-2.42 2.18 1.09 2.16 2.42c0 1.34-.95 2.42-2.16 2.42z"/>
@@ -55,16 +69,27 @@ import { site } from '../data/site';
       </div>
     </div>
 
-    <div class="reveal relative flex justify-center lg:justify-self-end" style="--reveal-delay: 200ms">
+    <div class="reveal relative hidden justify-center lg:block lg:justify-self-end" style="--reveal-delay: 200ms">
       <img
         src="/images/brand/logo-hero.webp"
         alt="Logo de Craftland: jugador con antorcha sobre una isla flotante frente a un castillo"
         width="800"
         height="800"
-        class="w-full max-w-sm rounded-3xl lg:max-w-md"
+        class="w-full max-w-sm drop-shadow-[0_25px_50px_rgba(0,0,0,0.9)] lg:max-w-md"
         loading="eager"
-        fetchpriority="high"
+        decoding="async"
       />
     </div>
   </div>
+
+  <!-- Indicador de scroll -->
+  <a
+    href="#modalidades"
+    class="absolute bottom-6 left-1/2 -translate-x-1/2 text-mist-400 transition-colors hover:text-white"
+    aria-label="Bajar a las modalidades"
+  >
+    <svg class="h-6 w-6 animate-bounce motion-reduce:animate-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 5v14M5 12l7 7 7-7"></path>
+    </svg>
+  </a>
 </section>

@@ -93,6 +93,7 @@ export const t = {
     subtitle:
       'Eventos cada semana, staff activo y un Discord donde se decide el futuro del servidor. Los jugadores proponen, los jugadores votan.',
     discordTitle: 'Únete al Discord',
+    galleryCaption: 'El lobby, construido bloque a bloque por la comunidad',
     discordDescription: 'Anuncios, soporte, eventos y gente con la que jugar. Nos vemos dentro.',
     discordCta: 'Entrar al Discord',
     stats: [
