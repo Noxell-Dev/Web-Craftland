@@ -21,24 +21,24 @@ import { site } from '../data/site';
 
   <div class="relative mx-auto grid w-full max-w-6xl items-center gap-10 px-4 pt-32 pb-20 sm:px-6 lg:grid-cols-[1.15fr_0.85fr]">
     <div>
-      <p class="reveal flex items-center gap-2.5 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-grape-300">
+      <p class="hero-in flex items-center gap-2.5 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-grape-300" style="--hero-delay: 100ms">
         <span class="relative flex h-2.5 w-2.5 shrink-0">
           <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime-online opacity-75 motion-reduce:animate-none" aria-hidden="true"></span>
           <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-lime-online shadow-[0_0_10px_rgba(51,204,51,0.8)]" aria-hidden="true"></span>
         </span>
         {t.hero.overline}
       </p>
-      <h1 class="reveal mt-4 font-display text-5xl leading-[1.05] tracking-wide drop-shadow-[0_3px_14px_rgba(0,0,0,0.85)] sm:text-6xl lg:text-7xl" style="--reveal-delay: 60ms">
+      <h1 class="hero-in mt-4 font-display text-5xl leading-[1.05] tracking-wide drop-shadow-[0_3px_14px_rgba(0,0,0,0.85)] sm:text-6xl lg:text-7xl" style="--hero-delay: 200ms">
         {t.hero.titleTop}
         <span class="block text-grape-400 drop-shadow-[0_4px_0_rgba(83,18,153,0.7)]">{t.hero.titleAccent}</span>
         <span class="block">{t.hero.titleBottom}</span>
       </h1>
-      <p class="reveal mt-6 max-w-xl text-lg leading-relaxed text-mist-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]" style="--reveal-delay: 120ms">
+      <p class="hero-in mt-6 max-w-xl text-lg leading-relaxed text-mist-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]" style="--hero-delay: 340ms">
         {t.hero.subtitle}
       </p>
 
       <!-- IP: la entrada de lista de servidores (elemento memorable) -->
-      <div class="reveal mt-8 max-w-md" style="--reveal-delay: 180ms">
+      <div class="hero-in mt-8 max-w-md" style="--hero-delay: 480ms">
         <p class="mb-2 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-mist-400 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">{t.hero.ipLabel}</p>
         <div class="ip-chip flex items-center gap-3 rounded-xl px-4 py-3 backdrop-blur-md">
           <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-lime-online shadow-[0_0_10px_rgba(51,204,51,0.8)]" aria-hidden="true"></span>
@@ -55,7 +55,7 @@ import { site } from '../data/site';
         </div>
       </div>
 
-      <div class="reveal mt-6 flex flex-wrap items-center gap-4" style="--reveal-delay: 240ms">
+      <div class="hero-in mt-6 flex flex-wrap items-center gap-4" style="--hero-delay: 620ms">
         <a
           href={t.hero.secondaryCtaHref}
           rel="noopener"
@@ -69,7 +69,7 @@ import { site } from '../data/site';
       </div>
     </div>
 
-    <div class="reveal relative hidden justify-center lg:block lg:justify-self-end" style="--reveal-delay: 200ms">
+    <div class="hero-in relative hidden justify-center lg:block lg:justify-self-end" style="--hero-delay: 380ms">
       <img
         src="/images/brand/logo-hero.webp"
         alt="Logo de Craftland: jugador con antorcha sobre una isla flotante frente a un castillo"
