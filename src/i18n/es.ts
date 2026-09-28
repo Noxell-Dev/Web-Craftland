@@ -19,12 +19,12 @@ export const t = {
   closeMenu: 'Cerrar menú de navegación',
 
   hero: {
-    overline: 'Servidor de Minecraft · Java 1.8 – 1.26',
+    overline: 'Java + Bedrock · Java 1.8 – 1.26',
     titleTop: 'Tu próxima',
     titleAccent: 'aventura',
     titleBottom: 'empieza aquí',
     subtitle:
-      'Survival, Creativo y Skyblock con una comunidad que lleva años construyendo juntos. Entra con cualquier versión desde la 1.8.',
+      'Survival, Creativo y Skyblock con una comunidad que lleva años construyendo juntos. Entra desde Java (1.8 – 1.26) o desde Bedrock en móvil y consola.',
     ipLabel: 'IP del servidor',
     ipValue: 'play.craftlandmc.com',
     copyIp: 'Copiar IP',
@@ -72,8 +72,8 @@ export const t = {
     steps: [
       {
         n: '01',
-        title: 'Abre Minecraft Java',
-        description: 'Sirve cualquier versión desde la 1.8 hasta la 1.26. La que tengas instalada vale.',
+        title: 'Abre Minecraft',
+        description: 'Java Edition (cualquier versión de la 1.8 a la 1.26) o Bedrock desde móvil, tablet o consola. Todo vale.',
       },
       {
         n: '02',
@@ -93,7 +93,6 @@ export const t = {
     subtitle:
       'Eventos cada semana, staff activo y un Discord donde se decide el futuro del servidor. Los jugadores proponen, los jugadores votan.',
     discordTitle: 'Únete al Discord',
-    galleryCaption: 'El lobby, construido bloque a bloque por la comunidad',
     discordDescription: 'Anuncios, soporte, eventos y gente con la que jugar. Nos vemos dentro.',
     discordCta: 'Entrar al Discord',
     stats: [
@@ -109,12 +108,12 @@ export const t = {
       {
         question: '¿Necesito premium para entrar?',
         answer:
-          'No es obligatorio: el servidor soporta cuentas premium y no premium. Solo necesitas Minecraft Java Edition en cualquiera de sus versiones soportadas (1.8 a 1.26).',
+          'No es obligatorio: el servidor soporta cuentas premium y no premium, tanto en Java (1.8 – 1.26) como en Bedrock (móvil y consola).',
       },
       {
         question: '¿Puedo jugar desde Bedrock (móvil/consola)?',
         answer:
-          'De momento el servidor es solo Java Edition. Si juegas desde móvil o consola, puedes unirte al Discord para enterarte de las novedades sobre soporte Bedrock.',
+          'Sí: Craftland es también Bedrock. Juega desde móvil, tablet o consola con la misma IP y el mismo progreso que en Java.',
       },
       {
         question: '¿Se borra mi progreso alguna vez?',
