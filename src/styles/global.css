@@ -181,22 +181,23 @@ html:not(.js) .reveal {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: calc((var(--edge-proximity) - 25) / 75);
-  transition: opacity 300ms ease-out;
+  opacity: calc((var(--edge-proximity) - 45) / 55);
+  transition: opacity 120ms ease-out;
   box-shadow:
     inset 0 0 0 1px hsl(var(--glow-color) / 0.9),
     inset 0 0 10px 1px hsl(var(--glow-color) / 0.4),
     inset 0 0 28px 4px hsl(var(--glow-color) / 0.18);
+  border-radius: inherit;
   -webkit-mask-image: conic-gradient(
-    from var(--cursor-angle) at center,
-    black 3%, transparent 13%, transparent 87%, black 97%
+    from calc(var(--cursor-angle) - 14deg) at center,
+    black 0 6.5%, transparent 8.5% 100%
   );
   mask-image: conic-gradient(
-    from var(--cursor-angle) at center,
-    black 3%, transparent 13%, transparent 87%, black 97%
+    from calc(var(--cursor-angle) - 14deg) at center,
+    black 0 6.5%, transparent 8.5% 100%
   );
 }
 .glow-card:not(:hover) .glow-edge {
   opacity: 0;
-  transition: opacity 750ms ease-in-out;
+  transition: opacity 500ms ease-in-out;
 }
