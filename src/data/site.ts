@@ -18,10 +18,10 @@ export const site = {
     { id: 'skyblock', label: 'Skyblock' },
   ],
   ranks: [
-    { id: 'vip', label: 'VIP', tagline: 'El primero de todos', color: 'emerald', featured: false },
-    { id: 'heroe', label: 'Héroe', tagline: 'Leyenda del servidor', color: 'sky', featured: false },
-    { id: 'leyenda', label: 'Leyenda', tagline: 'Tu nombre en el hall', color: 'amber', featured: false },
     { id: 'eterno', label: 'Eterno', tagline: 'El rango definitivo', color: 'rose', featured: true },
+    { id: 'leyenda', label: 'Leyenda', tagline: 'Tu nombre en el hall', color: 'amber', featured: false },
+    { id: 'heroe', label: 'Héroe', tagline: 'Leyenda del servidor', color: 'sky', featured: false },
+    { id: 'vip', label: 'VIP', tagline: 'El primero de todos', color: 'emerald', featured: false },
   ],
 } as const;
 
