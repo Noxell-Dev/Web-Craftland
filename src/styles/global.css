@@ -181,22 +181,252 @@ html:not(.js) .reveal {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: calc((var(--edge-proximity) - 25) / 75);
-  transition: opacity 300ms ease-out;
+  opacity: calc((var(--edge-proximity) - 45) / 55);
+  transition: opacity 120ms ease-out;
   box-shadow:
     inset 0 0 0 1px hsl(var(--glow-color) / 0.9),
     inset 0 0 10px 1px hsl(var(--glow-color) / 0.4),
     inset 0 0 28px 4px hsl(var(--glow-color) / 0.18);
+  border-radius: inherit;
   -webkit-mask-image: conic-gradient(
-    from var(--cursor-angle) at center,
-    black 3%, transparent 13%, transparent 87%, black 97%
+    from calc(var(--cursor-angle) - 14deg) at center,
+    black 0 6.5%, transparent 8.5% 100%
   );
   mask-image: conic-gradient(
-    from var(--cursor-angle) at center,
-    black 3%, transparent 13%, transparent 87%, black 97%
+    from calc(var(--cursor-angle) - 14deg) at center,
+    black 0 6.5%, transparent 8.5% 100%
   );
 }
 .glow-card:not(:hover) .glow-edge {
   opacity: 0;
-  transition: opacity 750ms ease-in-out;
+  transition: opacity 500ms ease-in-out;
+}
+
+
+
+/* Titulo completo dibujado a trazo (port vanilla de React Bits StrokeText).
+   Trazo letra a letra + fill posterior. Solo dash-offset/opacity: GPU-friendly. */
+.stroke-title { display:flex; flex-direction:column; align-items:center; }
+.stroke-title .st-line { display:block; width:100%; height:1.16em; overflow:visible; }
+.stroke-title .st-stroke { fill:none; stroke:#C9A6FF; stroke-width:3; stroke-linejoin:round; stroke-linecap:round; }
+html.js .stroke-title .st-stroke tspan { stroke-dasharray:1200; stroke-dashoffset:1200; animation:strokeDraw .45s cubic-bezier(.65,.05,.36,1) forwards; }
+html.js .stroke-title .st-fill { opacity:0; animation:strokeFill .3s ease-out forwards; }
+.stroke-title .st-fill { user-select:none; }
+.stroke-title .st-glow .st-fill { filter:drop-shadow(0 0 20px rgba(180,124,255,.6)); }
+@keyframes strokeDraw { to { stroke-dashoffset:0; } }
+@keyframes strokeFill { to { opacity:1; } }
+@media (prefers-reduced-motion:reduce) {
+  html.js .stroke-title .st-stroke tspan { stroke-dashoffset:0; animation:none; }
+  html.js .stroke-title .st-fill { opacity:1; animation:none; }
+}
+
+/* ===== Liquid glass de verdad (port de React Bits GlassSurface a vanilla).
+   El truco no es solo blur: un filtro SVG feDisplacementMap deforma los
+   bordes como cristal líquido. El blur simple queda como fallback. */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(16px) saturate(1.7);
+  backdrop-filter: blur(16px) saturate(1.7);
+  -webkit-backdrop-filter: url(#glass-liquid) blur(16px) saturate(1.7);
+  backdrop-filter: url(#glass-liquid) blur(16px) saturate(1.7);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 16px 44px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.22),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.06);
+}
+#site-header.is-scrolled .liquid-glass {
+  background: rgba(13, 13, 15, 0.55);
+}
+
+/* ===== SplitText (port de React Bits): titulares por caracteres ===== */
+[data-split] .split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.55em) rotate(5deg);
+  filter: blur(6px);
+}
+[data-split].split-in .split-char {
+  animation: split-char-in 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: calc(var(--char-index) * 26ms);
+}
+@keyframes split-char-in {
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+html:not(.js) [data-split] .split-char {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ===== ShinyText (port de React Bits): brillo barriendo el texto ===== */
+[data-shiny] {
+  background: linear-gradient(110deg, #c9a6ff 25%, #ffffff 42%, #c9a6ff 60%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shiny-sweep 3.4s linear infinite;
+}
+@keyframes shiny-sweep {
+  to {
+    background-position: -220% 0;
+  }
+}
+
+/* ===== SpotlightCard (port de React Bits): glow que sigue al cursor ===== */
+.spotlight-card {
+  --spot-x: 50%;
+  --spot-y: 50%;
+  --spot-color: rgba(138, 43, 226, 0.32);
+}
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    240px circle at var(--spot-x) var(--spot-y),
+    var(--spot-color),
+    transparent 70%
+  );
+}
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* ===== StarBorder (port de React Bits): borde cónico animado ===== */
+@property --star-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.star-border {
+  display: inline-block;
+  border-radius: 14px;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--star-angle),
+    var(--color-grape-500),
+    var(--color-grape-700),
+    var(--color-grape-300),
+    var(--color-grape-500)
+  );
+  animation: star-spin 3.6s linear infinite;
+}
+@keyframes star-spin {
+  to {
+    --star-angle: 360deg;
+  }
+}
+.star-border > a {
+  border-radius: 12px;
+  display: inline-flex;
+  width: 100%;
+}
+
+/* ===== Arquero flotante (hero de Rangos) ===== */
+.archer-float {
+  animation: archer-float 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes archer-float {
+  0%, 100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(1deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-split] .split-char {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none;
+  }
+  [data-shiny] {
+    animation: none;
+  }
+  .star-border {
+    animation: none;
+  }
+  .archer-float {
+    animation: none;
+  }
+}
+
+/* ===== Arquero animado: video WebM con alpha al hover ===== */
+[data-archer] {
+  cursor: pointer;
+}
+[data-archer-poster],
+[data-archer-anim] {
+  transition: opacity 0.25s ease;
+}
+[data-archer].is-playing [data-archer-poster] {
+  opacity: 0;
+}
+[data-archer].is-playing [data-archer-anim] {
+  opacity: 1;
+}
+/* el video no flota con CSS (ya lleva el movimiento renderizado) */
+[data-archer].is-playing .archer-float {
+  animation-play-state: paused;
+}
+
+/* flecha que vuela hacia los rangos */
+.archer-arrow {
+  left: 58%;
+  top: 28%;
+  width: 120px;
+  transform: translate(0, 0);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+[data-archer].is-shooting .archer-arrow {
+  animation: arrow-fly 0.7s cubic-bezier(0.2, 0.6, 0.4, 1) forwards;
+}
+@keyframes arrow-fly {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(420px, -40px) rotate(-4deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(560px, -30px) rotate(-4deg);
+  }
+}
+
+/* ===== Tilt 3D para tarjetas de modos ===== */
+[data-tilt] {
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+  will-change: transform;
+}
+[data-tilt]:hover {
+  transition: transform 0.08s ease-out, border-color 0.25s ease;
+}
+.tilt-inner {
+  transform: translateZ(30px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-archer-anim] {
+    display: none;
+  }
+  .archer-arrow {
+    display: none;
+  }
 }

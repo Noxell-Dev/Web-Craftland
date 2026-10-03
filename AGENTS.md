@@ -49,6 +49,9 @@
    sobre fondo oscuro (AA: 4.5:1 cuerpo).
 
 ## Decisiones registradas
+- 2026-10-03: nueva sección Rangos (`src/components/Rangos.astro`, datos en `site.ranks`) con el render del arquero (`public/images/renders/arquero.webp`, 26 KB) y sección Por Qué Craftland (`src/components/WhyCraftland.astro`); textos en `src/i18n/es.ts` (`t.ranks`, `t.why`).
+- 2026-10-03: header convertido a píldora flotante liquid glass de verdad: filtro SVG `feDisplacementMap` (`#glass-liquid` en BaseLayout) + `backdrop-filter` con fallback a blur simple. Clase `.liquid-glass` en `global.css`.
+- 2026-10-03: animaciones vanilla en `src/scripts/fx.ts` (ports de React Bits): SplitText (`[data-split]`), SpotlightCard (`[data-spotlight]`), Magnet (`[data-magnet]`); ShinyText (`[data-shiny]`) y StarBorder (`.star-border`) solo CSS. Todo respeta `prefers-reduced-motion` y no-JS.
 - 2026-09-27: datos del servidor confirmados por Pablo: IP
   `play.craftlandmc.com`, Discord `discord.gg/rvfmDv5dcU`, modalidades
   Survival/Creativo/Skyblock, Java 1.8–1.26.

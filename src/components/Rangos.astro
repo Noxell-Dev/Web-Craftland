@@ -1,0 +1,94 @@
+---
+import { t } from '../i18n/es';
+import { site } from '../data/site';
+---
+
+<section id="rangos" class="relative py-24 sm:py-28" aria-labelledby="rangos-title">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <p class="reveal font-mono text-xs uppercase tracking-[0.25em] text-grape-400">{t.ranks.overline}</p>
+    <h2 id="rangos-title" data-split class="reveal mt-3 font-display text-4xl tracking-wide text-mist-50 sm:text-5xl">
+      {t.ranks.title}
+    </h2>
+    <p class="reveal mt-4 max-w-2xl text-mist-400 leading-relaxed" style="--reveal-delay: 120ms">
+      {t.ranks.subtitle}
+    </p>
+
+    <div class="mt-12 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <div class="reveal relative mx-auto w-full max-w-sm" style="--reveal-delay: 80ms" data-archer>
+        <div
+          aria-hidden="true"
+          class="absolute inset-x-8 top-10 aspect-square rounded-full bg-grape-500/25 blur-3xl"
+        ></div>
+        <img
+          src="/images/renders/arquero.webp"
+          srcset="/images/renders/arquero-320.webp 320w, /images/renders/arquero.webp 640w"
+          sizes="(max-width: 1024px) 320px, 420px"
+          alt={t.ranks.archerAlt}
+          width="640"
+          height="640"
+          loading="lazy"
+          decoding="async"
+          data-archer-poster
+          class="archer-float relative z-10 mx-auto w-full max-w-[380px] drop-shadow-[0_28px_36px_rgba(0,0,0,0.55)]"
+        />
+        <img
+          src="/images/renders/arquero-draw.webp"
+          alt=""
+          aria-hidden="true"
+          data-archer-anim
+          class="pointer-events-none absolute inset-0 z-10 mx-auto w-full max-w-[380px] opacity-0 drop-shadow-[0_28px_36px_rgba(0,0,0,0.55)]"
+        />
+        <img
+          src="/images/renders/flecha.png"
+          alt=""
+          aria-hidden="true"
+          data-archer-arrow
+          class="archer-arrow pointer-events-none absolute z-20 opacity-0"
+        />
+      </div>
+
+      <div>
+        <ul class="reveal grid grid-cols-1 gap-3 sm:grid-cols-2" style="--reveal-delay: 140ms" role="list">
+          {site.ranks.map((rank) => (
+            <li
+              data-spotlight
+              class:list={[
+                'spotlight-card group relative overflow-hidden rounded-2xl border p-4 transition-transform duration-200 hover:-translate-y-1',
+                rank.featured
+                  ? 'border-grape-500/50 bg-gradient-to-br from-grape-500/20 to-grape-500/5'
+                  : 'border-white/10 bg-night-800',
+              ]}
+            >
+              <p class:list={[
+                'font-display text-lg tracking-wide',
+                rank.featured ? 'text-grape-300' : 'text-mist-50',
+              ]}>
+                {rank.id === 'eterno' ? <span data-shiny>{rank.label}</span> : rank.label}
+              </p>
+              <p class="mt-0.5 text-sm text-mist-400">{rank.tagline}</p>
+            </li>
+          ))}
+        </ul>
+        <div class="reveal mt-8 flex flex-wrap items-center gap-4" style="--reveal-delay: 200ms">
+          <span class="star-border" data-magnet>
+            <a
+              href={site.discordUrl}
+              rel="noopener"
+              class="btn-gloss inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-grape-400 to-grape-600 px-6 py-3 font-bold text-white shadow-[0_6px_24px_rgba(138,43,226,0.45)] transition-shadow hover:shadow-[0_8px_32px_rgba(138,43,226,0.65)]"
+            >
+              {t.ranks.storeCta}
+            </a>
+          </span>
+          <a
+            href={site.discordUrl}
+            rel="noopener"
+            data-magnet
+            class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-bold text-mist-50 transition-colors hover:bg-white/10"
+          >
+            {t.ranks.compareCta}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
