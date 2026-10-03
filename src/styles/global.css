@@ -414,12 +414,13 @@ html:not(.js) [data-split] .split-char {
   transform-style: preserve-3d;
   transition: transform 0.25s ease, border-color 0.25s ease;
   will-change: transform;
+  overflow: hidden;
 }
 [data-tilt]:hover {
   transition: transform 0.08s ease-out, border-color 0.25s ease;
 }
 .tilt-inner {
-  transform: translateZ(30px);
+  border-radius: inherit;
 }
 
 @media (prefers-reduced-motion: reduce) {
