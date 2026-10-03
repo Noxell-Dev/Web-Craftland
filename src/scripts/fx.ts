@@ -72,6 +72,38 @@ function initMagnet(): void {
   });
 }
 
+/** Arquero animado: al pasar el ratón muestra el APNG del tensado. */
+function initArcherVideo(): void {
+  const wrap = document.querySelector<HTMLElement>('[data-archer]');
+  const anim = wrap?.querySelector<HTMLImageElement>('[data-archer-anim]');
+  if (!wrap || !anim || reducedMotion()) return;
+  // solo en dispositivos con hover real
+  if (!window.matchMedia('(hover: hover)').matches) return;
+
+  // precargar el APNG en segundo plano cuando el navegador esté ocioso
+  const preload = (): void => {
+    const img = new Image();
+    img.src = anim.src;
+  };
+  if ('requestIdleCallback' in window) {
+    (window as Window & { requestIdleCallback: (cb: () => void) => void }).requestIdleCallback(preload);
+  } else {
+    window.setTimeout(preload, 1500);
+  }
+
+  wrap.addEventListener('pointerenter', () => {
+    // reiniciar la animación APNG
+    const src = anim.src;
+    anim.src = '';
+    anim.src = src;
+    wrap.classList.add('is-playing');
+  });
+  wrap.addEventListener('pointerleave', () => {
+    wrap.classList.remove('is-playing');
+  });
+}
+
 initSplitText();
 initSpotlight();
 initMagnet();
+initArcherVideo();

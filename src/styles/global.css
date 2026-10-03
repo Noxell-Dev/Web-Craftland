@@ -363,3 +363,28 @@ html:not(.js) [data-split] .split-char {
     animation: none;
   }
 }
+
+/* ===== Arquero animado: video WebM con alpha al hover ===== */
+[data-archer] {
+  cursor: pointer;
+}
+[data-archer-poster],
+[data-archer-anim] {
+  transition: opacity 0.25s ease;
+}
+[data-archer].is-playing [data-archer-poster] {
+  opacity: 0;
+}
+[data-archer].is-playing [data-archer-anim] {
+  opacity: 1;
+}
+/* el video no flota con CSS (ya lleva el movimiento renderizado) */
+[data-archer].is-playing .archer-float {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-archer-anim] {
+    display: none;
+  }
+}

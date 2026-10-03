@@ -14,7 +14,7 @@ import { site } from '../data/site';
     </p>
 
     <div class="mt-12 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-      <div class="reveal relative mx-auto w-full max-w-sm" style="--reveal-delay: 80ms">
+      <div class="reveal relative mx-auto w-full max-w-sm" style="--reveal-delay: 80ms" data-archer>
         <div
           aria-hidden="true"
           class="absolute inset-x-8 top-10 aspect-square rounded-full bg-grape-500/25 blur-3xl"
@@ -28,7 +28,15 @@ import { site } from '../data/site';
           height="640"
           loading="lazy"
           decoding="async"
+          data-archer-poster
           class="archer-float relative z-10 mx-auto w-full max-w-[380px] drop-shadow-[0_28px_36px_rgba(0,0,0,0.55)]"
+        />
+        <img
+          src="/images/renders/arquero-draw.png"
+          alt=""
+          aria-hidden="true"
+          data-archer-anim
+          class="pointer-events-none absolute inset-0 z-10 mx-auto w-full max-w-[380px] opacity-0 drop-shadow-[0_28px_36px_rgba(0,0,0,0.55)]"
         />
       </div>
 
