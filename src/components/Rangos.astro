@@ -61,24 +61,42 @@ import { site } from '../data/site';
                 rank.id === 'eterno' && 'border-rose-500/60 bg-gradient-to-br from-rose-500/25 via-rose-500/10 to-transparent p-7',
               ]}
             >
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class:list={[
-                    'font-display tracking-wide',
-                    rank.id === 'vip' && 'text-lg text-emerald-300',
-                    rank.id === 'heroe' && 'text-xl text-sky-300',
-                    rank.id === 'leyenda' && 'text-2xl text-amber-300',
-                    rank.id === 'eterno' && 'text-3xl text-rose-200',
-                  ]}>
-                    {rank.id === 'eterno' ? <span data-shiny>{rank.label}</span> : rank.label}
-                  </p>
-                  <p class:list={[
-                    'mt-0.5 text-mist-400',
-                    rank.id === 'eterno' ? 'text-base text-mist-300' : 'text-sm',
-                  ]}>{rank.tagline}</p>
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                  <img
+                    src={`/images/ranks/${rank.id}.webp`}
+                    alt=""
+                    aria-hidden="true"
+                    width="256"
+                    height="256"
+                    loading="lazy"
+                    decoding="async"
+                    class:list={[
+                      'shrink-0 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]',
+                      rank.id === 'vip' && 'h-10 w-10',
+                      rank.id === 'heroe' && 'h-12 w-12',
+                      rank.id === 'leyenda' && 'h-14 w-14',
+                      rank.id === 'eterno' && 'h-16 w-16',
+                    ]}
+                  />
+                  <div>
+                    <p class:list={[
+                      'font-display tracking-wide',
+                      rank.id === 'vip' && 'text-lg text-emerald-300',
+                      rank.id === 'heroe' && 'text-xl text-sky-300',
+                      rank.id === 'leyenda' && 'text-2xl text-amber-300',
+                      rank.id === 'eterno' && 'text-3xl text-rose-200',
+                    ]}>
+                      {rank.id === 'eterno' ? <span data-shiny>{rank.label}</span> : rank.label}
+                    </p>
+                    <p class:list={[
+                      'mt-0.5 text-mist-400',
+                      rank.id === 'eterno' ? 'text-base text-mist-300' : 'text-sm',
+                    ]}>{rank.tagline}</p>
+                  </div>
                 </div>
                 {rank.id === 'eterno' && (
-                  <span class="rounded-full border border-rose-400/40 bg-rose-500/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-rose-200">
+                  <span class="shrink-0 rounded-full border border-rose-400/40 bg-rose-500/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-rose-200">
                     El más exclusivo
                   </span>
                 )}
