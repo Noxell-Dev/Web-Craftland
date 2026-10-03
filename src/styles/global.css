@@ -383,8 +383,37 @@ html:not(.js) [data-split] .split-char {
   animation-play-state: paused;
 }
 
+/* flecha que vuela hacia los rangos */
+.archer-arrow {
+  left: 58%;
+  top: 28%;
+  width: 120px;
+  transform: translate(0, 0);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+[data-archer].is-shooting .archer-arrow {
+  animation: arrow-fly 0.7s cubic-bezier(0.2, 0.6, 0.4, 1) forwards;
+}
+@keyframes arrow-fly {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(420px, -40px) rotate(-4deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(560px, -30px) rotate(-4deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-archer-anim] {
+    display: none;
+  }
+  .archer-arrow {
     display: none;
   }
 }

@@ -72,7 +72,7 @@ function initMagnet(): void {
   });
 }
 
-/** Arquero animado: al pasar el ratón muestra el APNG del tensado. */
+/** Arquero animado: al pasar el ratón tensa el arco y dispara una flecha hacia los rangos. */
 function initArcherVideo(): void {
   const wrap = document.querySelector<HTMLElement>('[data-archer]');
   const anim = wrap?.querySelector<HTMLImageElement>('[data-archer-anim]');
@@ -80,10 +80,12 @@ function initArcherVideo(): void {
   // solo en dispositivos con hover real
   if (!window.matchMedia('(hover: hover)').matches) return;
 
-  // precargar el APNG en segundo plano cuando el navegador esté ocioso
+  // precargar el APNG y la flecha en segundo plano cuando el navegador esté ocioso
   const preload = (): void => {
-    const img = new Image();
-    img.src = anim.src;
+    for (const src of [anim.src, '/images/renders/flecha.png']) {
+      const img = new Image();
+      img.src = src;
+    }
   };
   if ('requestIdleCallback' in window) {
     (window as Window & { requestIdleCallback: (cb: () => void) => void }).requestIdleCallback(preload);
@@ -91,15 +93,22 @@ function initArcherVideo(): void {
     window.setTimeout(preload, 1500);
   }
 
+  let shootTimer: number | undefined;
   wrap.addEventListener('pointerenter', () => {
     // reiniciar la animación APNG
     const src = anim.src;
     anim.src = '';
     anim.src = src;
     wrap.classList.add('is-playing');
+    // disparar la flecha cuando el arco está tensado (~0.65s)
+    window.clearTimeout(shootTimer);
+    shootTimer = window.setTimeout(() => {
+      wrap.classList.add('is-shooting');
+    }, 650);
   });
   wrap.addEventListener('pointerleave', () => {
-    wrap.classList.remove('is-playing');
+    window.clearTimeout(shootTimer);
+    wrap.classList.remove('is-playing', 'is-shooting');
   });
 }
 
