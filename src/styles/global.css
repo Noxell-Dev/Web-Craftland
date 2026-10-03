@@ -409,6 +409,20 @@ html:not(.js) [data-split] .split-char {
   }
 }
 
+/* ===== GlareHover para tarjetas cinematográficas (Por Qué) ===== */
+[data-glare] .glare {
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(255, 255, 255, 0.08) 35%,
+    transparent 65%
+  );
+  mix-blend-mode: overlay;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-glare] .glare { display: none; }
+}
+
 /* ===== Tilt 3D para tarjetas de modos ===== */
 [data-tilt] {
   transform-style: preserve-3d;

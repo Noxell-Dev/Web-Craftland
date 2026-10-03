@@ -149,8 +149,31 @@ function initTilt(): void {
   });
 }
 
+function initGlare(): void {
+  if (reducedMotion()) return;
+  if (!window.matchMedia('(hover: hover)').matches) return;
+  const cards = document.querySelectorAll<HTMLElement>('[data-glare]');
+  cards.forEach((card) => {
+    let raf = 0;
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        card.style.setProperty('--glare-x', `${Math.round(px * 100)}%`);
+        card.style.setProperty('--glare-y', `${Math.round(py * 100)}%`);
+      });
+    });
+    card.addEventListener('pointerleave', () => {
+      cancelAnimationFrame(raf);
+    });
+  });
+}
+
 initSplitText();
 initSpotlight();
 initMagnet();
 initArcherVideo();
 initTilt();
+initGlare();
