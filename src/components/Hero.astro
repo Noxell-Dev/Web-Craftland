@@ -8,11 +8,11 @@ const titleLines = [
   { text: t.hero.titleAccent.toUpperCase(), fill: '#E4D2FF', glow: true },
   { text: t.hero.titleBottom.toUpperCase(), fill: '#F5F5F7', glow: false },
 ];
-const drawStagger = 0.055;
-const lineGap = 0.85;
-const drawDuration = 1.1;
-const letterDelay = (li: number, i: number) => (0.35 + li * lineGap + i * drawStagger).toFixed(2);
-const fillDelay = (li: number, len: number) => (0.35 + li * lineGap + len * drawStagger + 0.45).toFixed(2);
+const drawStagger = 0.03;
+const lineGap = 0.3;
+const drawDuration = 0.45;
+const letterDelay = (li: number, i: number) => (0.2 + li * lineGap + i * drawStagger).toFixed(2);
+const fillDelay = (li: number, len: number) => (0.2 + li * lineGap + len * drawStagger + 0.15).toFixed(2);
 ---
 
 <section class="relative flex min-h-[100svh] items-center overflow-hidden">
