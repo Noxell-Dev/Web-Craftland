@@ -16,9 +16,38 @@ const description =
 
 <BaseLayout title={title} description={description}>
   <Hero />
-  <Modes />
-  <Rangos />
-  <WhyCraftland />
+  <!-- Fondo Aurora continuo para Modos + Rangos + Por Qué -->
+  <div class="aurora-section relative overflow-hidden bg-night-950">
+    <!-- Aurora: degradado fluido animado -->
+    <div class="aurora-bg pointer-events-none absolute inset-0" aria-hidden="true"></div>
+    <!-- Cristales de amatista flotando -->
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <svg class="aurora-crystal absolute -left-8 top-16 h-24 w-24 opacity-30 blur-[1px]" style="animation-delay: 0s" viewBox="0 0 100 100" fill="none">
+        <path d="M50 5 68 40 50 95 32 40Z" fill="#8A2BE2" fill-opacity="0.45"/>
+        <path d="M50 5 68 40 50 95Z" fill="#B17EE8" fill-opacity="0.35"/>
+      </svg>
+      <svg class="aurora-crystal absolute right-[12%] top-24 h-14 w-14 opacity-40" style="animation-delay: -2s" viewBox="0 0 100 100" fill="none">
+        <path d="M50 5 68 40 50 95 32 40Z" fill="#8A2BE2" fill-opacity="0.5"/>
+      </svg>
+      <svg class="aurora-crystal absolute left-[18%] top-[45%] h-16 w-16 rotate-12 opacity-25 blur-[2px]" style="animation-delay: -4s" viewBox="0 0 100 100" fill="none">
+        <path d="M50 5 68 40 50 95 32 40Z" fill="#8A2BE2" fill-opacity="0.4"/>
+      </svg>
+      <svg class="aurora-crystal absolute right-[30%] top-[70%] h-10 w-10 -rotate-12 opacity-30" style="animation-delay: -1s" viewBox="0 0 100 100" fill="none">
+        <path d="M50 5 68 40 50 95 32 40Z" fill="#B17EE8" fill-opacity="0.45"/>
+      </svg>
+      <svg class="aurora-crystal absolute left-[45%] top-[85%] h-8 w-8 rotate-45 opacity-10 blur-[3px]" style="animation-delay: -3s" viewBox="0 0 100 100" fill="none">
+        <path d="M50 5 68 40 50 95 32 40Z" fill="#8A2BE2" fill-opacity="0.35"/>
+      </svg>
+      <svg class="aurora-crystal absolute right-[8%] top-[55%] h-20 w-20 opacity-20 blur-[1px]" style="animation-delay: -5s" viewBox="0 0 100 100" fill="none">
+        <path d="M50 5 68 40 50 95 32 40Z" fill="#8A2BE2" fill-opacity="0.4"/>
+      </svg>
+    </div>
+    <div class="relative">
+      <Modes />
+      <Rangos />
+      <WhyCraftland />
+    </div>
+  </div>
   <HowTo />
   <Community />
   <Faq />
