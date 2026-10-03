@@ -17,6 +17,18 @@ export const site = {
     { id: 'creativo', label: 'Creativo' },
     { id: 'skyblock', label: 'Skyblock' },
   ],
+  ranks: [
+    { id: 'vip', label: 'VIP', tagline: 'El primero de todos', featured: false },
+    { id: 'premium', label: 'Premium', tagline: 'Un paso más', featured: false },
+    { id: 'elite', label: 'Élite', tagline: 'Para los que destacan', featured: false },
+    { id: 'heroe', label: 'Héroe', tagline: 'Leyenda del servidor', featured: false },
+    { id: 'paladin', label: 'Paladín', tagline: 'Defensor de Craftland', featured: false },
+    { id: 'titan', label: 'Titán', tagline: 'Poder bruto', featured: true },
+    { id: 'fenix', label: 'Fénix', tagline: 'Renace siempre', featured: true },
+    { id: 'dragon', label: 'Dragón', tagline: 'Temido en PvP', featured: true },
+    { id: 'leyenda', label: 'Leyenda', tagline: 'Tu nombre en el hall', featured: true },
+    { id: 'eterno', label: 'Eterno', tagline: 'El rango definitivo', featured: true },
+  ],
 } as const;
 
 export type Site = typeof site;

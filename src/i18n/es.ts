@@ -10,6 +10,7 @@ export const t = {
 
   nav: [
     { label: 'Modalidades', href: '/#modalidades' },
+    { label: 'Rangos', href: '/#rangos' },
     { label: 'Cómo entrar', href: '/#como-entrar' },
     { label: 'Comunidad', href: '/#comunidad' },
     { label: 'Preguntas', href: '/#faq' },
@@ -84,6 +85,39 @@ export const t = {
         n: '03',
         title: 'Conecta y elige mundo',
         description: 'Al entrar, selecciona Survival, Creativo o Skyblock desde el menú del hub.',
+      },
+    ],
+  },
+
+  ranks: {
+    overline: 'Rangos VIP',
+    title: 'Sube de nivel',
+    subtitle:
+      'Apoya al servidor y presume de rango: kits exclusivos, partículas, mascotas y ventajas en las tres modalidades.',
+    archerAlt: 'Skin de Craftland con arco de Minecraft',
+    storeCta: 'Ver la tienda',
+    compareCta: 'Comparar rangos',
+  },
+
+  why: {
+    overline: 'Por qué Craftland',
+    title: 'Hecho para jugar en serio',
+    features: [
+      {
+        title: 'Sin lag',
+        description: 'Hardware dedicado y optimización constante para que el PvP se sienta fluido.',
+      },
+      {
+        title: 'Eventos semanales',
+        description: 'Torneos, drops y minijuegos organizados por el staff cada semana.',
+      },
+      {
+        title: 'Comunidad activa',
+        description: 'Discord vivo, clanes y gente con la que jugar todos los días.',
+      },
+      {
+        title: 'Staff y anti-cheat',
+        description: 'Protección contra trampas y un equipo que responde rápido.',
       },
     ],
   },

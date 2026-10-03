@@ -73,6 +73,12 @@ const orgJsonLd = {
     />
   </head>
   <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <filter id="glass-liquid" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="7" result="n" />
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="26" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </svg>
     <a class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-grape-500 focus:px-4 focus:py-2 focus:text-white" href="#contenido">
       {t.a11y.skipLink}
     </a>
@@ -83,5 +89,6 @@ const orgJsonLd = {
     <Footer />
     <script src="../scripts/main.ts"></script>
     <script src="../scripts/reveal.ts"></script>
+    <script src="../scripts/fx.ts"></script>
   </body>
 </html>

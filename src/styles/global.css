@@ -219,3 +219,147 @@ html.js .stroke-title .st-fill { opacity:0; animation:strokeFill .3s ease-out fo
   html.js .stroke-title .st-stroke tspan { stroke-dashoffset:0; animation:none; }
   html.js .stroke-title .st-fill { opacity:1; animation:none; }
 }
+
+/* ===== Liquid glass de verdad (port de React Bits GlassSurface a vanilla).
+   El truco no es solo blur: un filtro SVG feDisplacementMap deforma los
+   bordes como cristal líquido. El blur simple queda como fallback. */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(16px) saturate(1.7);
+  backdrop-filter: blur(16px) saturate(1.7);
+  -webkit-backdrop-filter: url(#glass-liquid) blur(16px) saturate(1.7);
+  backdrop-filter: url(#glass-liquid) blur(16px) saturate(1.7);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 16px 44px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.22),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.06);
+}
+#site-header.is-scrolled .liquid-glass {
+  background: rgba(13, 13, 15, 0.55);
+}
+
+/* ===== SplitText (port de React Bits): titulares por caracteres ===== */
+[data-split] .split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.55em) rotate(5deg);
+  filter: blur(6px);
+}
+[data-split].split-in .split-char {
+  animation: split-char-in 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: calc(var(--char-index) * 26ms);
+}
+@keyframes split-char-in {
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+html:not(.js) [data-split] .split-char {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ===== ShinyText (port de React Bits): brillo barriendo el texto ===== */
+[data-shiny] {
+  background: linear-gradient(110deg, #c9a6ff 25%, #ffffff 42%, #c9a6ff 60%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shiny-sweep 3.4s linear infinite;
+}
+@keyframes shiny-sweep {
+  to {
+    background-position: -220% 0;
+  }
+}
+
+/* ===== SpotlightCard (port de React Bits): glow que sigue al cursor ===== */
+.spotlight-card {
+  --spot-x: 50%;
+  --spot-y: 50%;
+  --spot-color: rgba(138, 43, 226, 0.32);
+}
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    240px circle at var(--spot-x) var(--spot-y),
+    var(--spot-color),
+    transparent 70%
+  );
+}
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* ===== StarBorder (port de React Bits): borde cónico animado ===== */
+@property --star-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.star-border {
+  display: inline-block;
+  border-radius: 14px;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--star-angle),
+    var(--color-grape-500),
+    var(--color-grape-700),
+    var(--color-grape-300),
+    var(--color-grape-500)
+  );
+  animation: star-spin 3.6s linear infinite;
+}
+@keyframes star-spin {
+  to {
+    --star-angle: 360deg;
+  }
+}
+.star-border > a {
+  border-radius: 12px;
+  display: inline-flex;
+  width: 100%;
+}
+
+/* ===== Arquero flotante (hero de Rangos) ===== */
+.archer-float {
+  animation: archer-float 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes archer-float {
+  0%, 100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(1deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-split] .split-char {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none;
+  }
+  [data-shiny] {
+    animation: none;
+  }
+  .star-border {
+    animation: none;
+  }
+  .archer-float {
+    animation: none;
+  }
+}
