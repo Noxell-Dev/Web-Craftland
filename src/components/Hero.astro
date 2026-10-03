@@ -43,7 +43,17 @@ import { site } from '../data/site';
 
     <h1 class="hero-in mt-4 max-w-3xl font-display text-4xl leading-[1.08] tracking-wide uppercase sm:text-5xl md:text-7xl" style="--hero-delay: 300ms">
       {t.hero.titleTop}
-      <span class="block text-grape-400 drop-shadow-[0_4px_0_rgba(83,18,153,0.7)]">{t.hero.titleAccent}</span>
+      <span class="block text-grape-400">
+        <span class="sr-only">{t.hero.titleAccent}</span>
+        <span class="stroke-word" aria-hidden="true">
+          <svg viewBox="150 8 620 118" role="img">
+            <text class="st-stroke" x="50%" y="100" text-anchor="middle" style="font:800 118px Anton, Impact, sans-serif; letter-spacing:4px;">
+              <tspan style="animation-delay:.35s">A</tspan><tspan style="animation-delay:.45s">V</tspan><tspan style="animation-delay:.55s">E</tspan><tspan style="animation-delay:.62s">N</tspan><tspan style="animation-delay:.7s">T</tspan><tspan style="animation-delay:.78s">U</tspan><tspan style="animation-delay:.86s">R</tspan><tspan style="animation-delay:.94s">A</tspan>
+            </text>
+            <text class="st-fill" x="50%" y="100" text-anchor="middle" style="font:800 118px Anton, Impact, sans-serif; letter-spacing:4px; animation-delay:1.5s;">AVENTURA</text>
+          </svg>
+        </span>
+      </span>
       <span class="block">{t.hero.titleBottom}</span>
     </h1>
 
