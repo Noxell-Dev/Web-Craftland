@@ -4,55 +4,61 @@ import { site } from '../data/site';
 ---
 
 <section id="comunidad" class="relative overflow-hidden py-20 sm:py-28" aria-labelledby="community-title">
-  <!-- Foto real del lobby como fondo de la sección -->
-  <img
-    src="/images/gallery/lobby-2.webp"
-    alt=""
-    width="1600"
-    height="856"
-    class="absolute inset-0 h-full w-full scale-105 object-cover blur-[2px]"
-    loading="lazy"
-    decoding="async"
-    aria-hidden="true"
-  />
-  <div class="absolute inset-0 bg-night-950/70" aria-hidden="true"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-night-950 via-transparent to-night-950/80" aria-hidden="true"></div>
+  <!-- Resplandor morado ambiental -->
+  <div class="absolute left-1/2 top-0 h-64 w-[42rem] -translate-x-1/2 rounded-full bg-grape-500/10 blur-3xl" aria-hidden="true"></div>
 
   <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
-    <div class="grid items-center gap-12 lg:grid-cols-2">
-      <div class="reveal">
-        <h2 id="community-title" class="font-display text-3xl tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] sm:text-4xl">{t.community.title}</h2>
-        <p class="mt-5 leading-relaxed text-mist-100 drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">{t.community.subtitle}</p>
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <h2 id="community-title" class="font-display text-3xl tracking-wide sm:text-4xl">{t.community.title}</h2>
+      <p class="mt-5 leading-relaxed text-mist-300">{t.community.subtitle}</p>
+    </div>
 
-        <dl class="mt-8 grid grid-cols-3 gap-4">
-          {t.community.stats.map((stat) => (
-            <div class="border-l-2 border-grape-600 pl-4">
-              <dt class="order-2 mt-1 text-sm text-mist-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">{stat.label}</dt>
-              <dd
-                class="font-display text-3xl text-grape-300 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
-                {...(stat.count !== undefined
-                  ? { 'data-count-up': String(stat.count), 'data-count-prefix': stat.value.startsWith('+') ? '+' : '' }
-                  : {})}
-              >
-                {stat.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
+    <!-- Stats en fila -->
+    <dl class="reveal mx-auto mt-10 grid max-w-3xl grid-cols-3 gap-6 text-center" style="--reveal-delay: 120ms">
+      {t.community.stats.map((stat) => (
+        <div class="rounded-2xl border border-white/10 bg-night-800/60 p-6 backdrop-blur-sm">
+          <dd
+            class="font-display text-4xl text-grape-300 sm:text-5xl"
+            {...(stat.count !== undefined
+              ? { 'data-count-up': String(stat.count), 'data-count-prefix': stat.value.startsWith('+') ? '+' : '' }
+              : {})}
+          >
+            {stat.value}
+          </dd>
+          <dt class="mt-2 text-sm text-mist-400">{stat.label}</dt>
+        </div>
+      ))}
+    </dl>
 
-      <div class="reveal block-border border border-grape-700/50 bg-night-950/85 p-8 text-center backdrop-blur-md lg:justify-self-end" style="--reveal-delay: 120ms">
-        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-grape-600/25">
-          <svg class="h-9 w-9 text-grape-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <!-- Banner Discord a ancho completo -->
+    <div class="reveal relative mt-12 overflow-hidden rounded-3xl border border-grape-700/40" style="--reveal-delay: 200ms">
+      <img
+        src="/images/gallery/lobby-2.webp"
+        alt=""
+        width="1600"
+        height="856"
+        class="absolute inset-0 h-full w-full scale-105 object-cover"
+        loading="lazy"
+        decoding="async"
+        aria-hidden="true"
+      />
+      <div class="absolute inset-0 bg-night-950/60" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-grape-900/50 via-transparent to-night-950/70" aria-hidden="true"></div>
+
+      <div class="relative flex flex-col items-center gap-6 p-10 text-center sm:p-14">
+        <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-grape-600/30 backdrop-blur-sm">
+          <svg class="h-9 w-9 text-grape-200" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28c-1.69.28-3.35.77-4.93 1.51A20.26 20.26 0 0 0 .1 18.06a19.9 19.9 0 0 0 6.07 3.03c.49-.66.93-1.37 1.3-2.1a12.9 12.9 0 0 1-2.05-.98c.17-.12.34-.25.5-.38a14.2 14.2 0 0 0 12.16 0c.16.13.33.26.5.38-.65.39-1.34.71-2.05.98.37.73.81 1.44 1.3 2.1a19.84 19.84 0 0 0 6.07-3.03 20.2 20.2 0 0 0-3.58-13.69zM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42s.95-2.42 2.16-2.42 2.18 1.09 2.16 2.42c0 1.34-.95 2.42-2.16 2.42zm7.96 0c-1.18 0-2.16-1.08-2.16-2.42s.95-2.42 2.16-2.42 2.18 1.09 2.16 2.42c0 1.34-.95 2.42-2.16 2.42z"/>
           </svg>
         </div>
-        <h3 class="mt-5 font-display text-2xl tracking-wide">{t.community.discordTitle}</h3>
-        <p class="mt-3 text-mist-200">{t.community.discordDescription}</p>
+        <div>
+          <h3 class="font-display text-2xl tracking-wide text-mist-50 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] sm:text-3xl">{t.community.discordTitle}</h3>
+          <p class="mx-auto mt-3 max-w-xl text-mist-200 drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">{t.community.discordDescription}</p>
+        </div>
         <a
           href={site.discordUrl}
           rel="noopener"
-          class="mt-6 inline-block rounded-xl bg-grape-500 px-8 py-3.5 font-bold text-white transition-colors hover:bg-grape-400 active:translate-y-px btn-gloss"
+          class="inline-block rounded-xl bg-grape-500 px-10 py-4 font-bold text-white transition-all hover:bg-grape-400 hover:shadow-[0_8px_32px_rgba(138,43,226,0.5)] active:translate-y-px btn-gloss"
         >
           {t.community.discordCta}
         </a>

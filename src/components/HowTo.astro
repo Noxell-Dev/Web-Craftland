@@ -4,39 +4,49 @@ import { site } from '../data/site';
 ---
 
 <section id="como-entrar" class="relative overflow-hidden py-20 sm:py-28" aria-labelledby="howto-title">
-  <!-- Foto real del lobby como fondo de la sección -->
+  <!-- Foto del lobby como fondo, fundida arriba y abajo -->
   <img
     src="/images/gallery/lobby-3.webp"
     alt=""
     width="1920"
     height="1027"
-    class="absolute inset-0 h-full w-full scale-105 object-cover blur-[2px]"
+    class="absolute inset-0 h-full w-full scale-105 object-cover"
     loading="lazy"
     decoding="async"
     aria-hidden="true"
+    style="-webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent); mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);"
   />
-  <div class="absolute inset-0 bg-night-950/65" aria-hidden="true"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-night-950 via-transparent to-night-950/80" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-night-950/70" aria-hidden="true"></div>
+  <!-- Resplandor morado ambiental -->
+  <div class="absolute left-1/2 top-0 h-64 w-[42rem] -translate-x-1/2 rounded-full bg-grape-500/10 blur-3xl" aria-hidden="true"></div>
 
   <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
-    <div class="reveal max-w-2xl">
+    <div class="reveal mx-auto max-w-2xl text-center">
       <p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-grape-300">{t.howTo.overline}</p>
       <h2 id="howto-title" class="mt-3 font-display text-3xl tracking-wide sm:text-4xl">{t.howTo.title}</h2>
     </div>
 
-    <ol class="mt-12 grid gap-6 md:grid-cols-3">
+    <!-- Timeline horizontal -->
+    <ol class="relative mt-16 grid gap-10 md:grid-cols-3 md:gap-6">
+      <!-- Línea conectora (solo desktop) -->
+      <div class="absolute left-[16%] right-[16%] top-7 hidden h-px bg-gradient-to-r from-transparent via-grape-500/60 to-transparent md:block" aria-hidden="true"></div>
+
       {t.howTo.steps.map((step, i) => (
-        <li class="reveal relative" style={`--reveal-delay: ${i * 70}ms`}>
-          <div class="block-border border border-white/10 bg-night-950/85 p-7 backdrop-blur-sm">
-            <p class="font-display text-5xl text-grape-500/40" aria-hidden="true">{step.n}</p>
-            <h3 class="mt-4 font-display text-xl tracking-wide">{step.title}</h3>
+        <li class="reveal relative flex flex-col items-center text-center" style={`--reveal-delay: ${i * 120}ms`}>
+          <!-- Nodo numerado -->
+          <div class="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border border-grape-400/50 bg-night-950 font-display text-xl text-grape-300 shadow-[0_0_24px_rgba(138,43,226,0.45)]">
+            {step.n}
+          </div>
+          <!-- Tarjeta glassmorphism -->
+          <div class="mt-6 w-full rounded-2xl border border-white/10 bg-night-950/70 p-7 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-grape-400/40 hover:shadow-[0_12px_40px_-8px_rgba(138,43,226,0.4)]">
+            <h3 class="font-display text-xl tracking-wide text-mist-50">{step.title}</h3>
             <p class="mt-2 leading-relaxed text-mist-400">{step.description}</p>
           </div>
         </li>
       ))}
     </ol>
 
-    <div class="reveal mt-10 flex justify-center" style="--reveal-delay: 200ms">
+    <div class="reveal mt-12 flex justify-center" style="--reveal-delay: 200ms">
       <button
         type="button"
         class="rounded-xl bg-grape-500 px-8 py-4 font-display text-lg tracking-wide text-white transition-colors hover:bg-grape-400 active:translate-y-px btn-gloss"
