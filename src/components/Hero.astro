@@ -45,15 +45,7 @@ const fillDelay = (li: number, len: number) => (0.2 + li * lineGap + len * drawS
       decoding="async"
     />
 
-    <p class="hero-in mt-7 flex items-center gap-2.5 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-grape-300" style="--hero-delay: 200ms">
-      <span class="relative flex h-2.5 w-2.5 shrink-0">
-        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime-online opacity-75 motion-reduce:animate-none" aria-hidden="true"></span>
-        <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-lime-online shadow-[0_0_10px_rgba(51,204,51,0.8)]" aria-hidden="true"></span>
-      </span>
-      {t.hero.overline}
-    </p>
-
-    <h1 class="hero-in mt-4 max-w-3xl font-display text-4xl leading-[1.1] uppercase sm:text-5xl md:text-7xl" style="--hero-delay: 300ms">
+    <h1 class="hero-in mt-7 max-w-3xl font-display text-4xl leading-[1.1] uppercase sm:text-5xl md:text-7xl" style="--hero-delay: 300ms">
       <span class="sr-only">{`${t.hero.titleTop} ${t.hero.titleAccent} ${t.hero.titleBottom}`}</span>
       <span class="stroke-title" aria-hidden="true">
         {titleLines.map((line, li) => (

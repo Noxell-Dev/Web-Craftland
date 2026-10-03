@@ -120,7 +120,37 @@ function initArcherVideo(): void {
   });
 }
 
+/** Tilt 3D para las tarjetas de modos (estilo React Bits TiltedCard). */
+function initTilt(): void {
+  if (reducedMotion()) return;
+  if (!window.matchMedia('(hover: hover)').matches) return;
+  const cards = document.querySelectorAll<HTMLElement>('[data-tilt]');
+  cards.forEach((card) => {
+    const glare = card.querySelector<HTMLElement>('.tilt-glare');
+    let raf = 0;
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const rx = (0.5 - py) * 10;
+        const ry = (px - 0.5) * 12;
+        card.style.transform = `rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateZ(0)`;
+        if (glare) {
+          glare.style.background = `radial-gradient(circle at ${Math.round(px * 100)}% ${Math.round(py * 100)}%, rgba(255,255,255,0.14), transparent 60%)`;
+        }
+      });
+    });
+    card.addEventListener('pointerleave', () => {
+      cancelAnimationFrame(raf);
+      card.style.transform = '';
+    });
+  });
+}
+
 initSplitText();
 initSpotlight();
 initMagnet();
 initArcherVideo();
+initTilt();
