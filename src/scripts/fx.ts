@@ -90,7 +90,7 @@ function initArcherVideo(): void {
   if ('requestIdleCallback' in window) {
     (window as Window & { requestIdleCallback: (cb: () => void) => void }).requestIdleCallback(preload);
   } else {
-    window.setTimeout(preload, 1500);
+    globalThis.setTimeout(preload, 1500);
   }
 
   let shootTimer: number | undefined;
