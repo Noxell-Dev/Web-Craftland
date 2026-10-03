@@ -11,42 +11,44 @@ const images = ['sin-lag', 'eventos', 'comunidad', 'staff'];
       {t.why.title}
     </h2>
 
-    <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" role="list">
+    <div
+      class="accordion-gallery reveal mt-12"
+      data-accordion
+      role="list"
+      aria-label="Por qué Craftland"
+      style="--ag-accent: #a855f7; --ag-overlay: #060010; --ag-text: #ffffff;"
+    >
       {t.why.features.map((feature, i) => (
-        <li
-          class="why-card reveal group relative overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-grape-400/50 hover:shadow-[0_12px_40px_-8px_rgba(138,43,226,0.5)]"
-          style={`--reveal-delay: ${i * 90}ms`}
-          data-glare
+        <div
+          class:list={['ag-panel', i === 0 && 'ag-panel--active']}
+          role="listitem"
+          tabindex="0"
+          aria-label={feature.title}
+          data-index={i}
         >
-          <div class="relative h-96 overflow-hidden">
-            <img
-              src={`/images/why/${images[i]}.webp`}
-              alt={feature.title}
-              width="800"
-              height="446"
-              loading="lazy"
-              decoding="async"
-              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div
-              aria-hidden="true"
-              class="glare pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            ></div>
-            <div
-              aria-hidden="true"
-              class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/40 to-transparent"
-            ></div>
-            <div class="absolute inset-x-0 bottom-0 p-5">
-              <h3 class="font-display text-xl tracking-wide text-mist-50 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                {feature.title}
-              </h3>
-              <p class="mt-1.5 text-sm leading-relaxed text-mist-300 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
-                {feature.description}
-              </p>
-            </div>
-          </div>
-        </li>
+          <span class="ag-panel__frame">
+            <span class="ag-panel__media">
+              <img
+                src={`/images/why/${images[i]}.webp`}
+                alt={feature.title}
+                width="800"
+                height="446"
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                draggable="false"
+              />
+            </span>
+            <span class="ag-panel__overlay" aria-hidden="true"></span>
+          </span>
+          <span class="ag-panel__label" aria-hidden="true">
+            <span class="ag-panel__bar"></span>
+            <span class="ag-panel__text">
+              <span class="ag-panel__title">{feature.title}</span>
+              <span class="ag-panel__desc">{feature.description}</span>
+            </span>
+          </span>
+        </div>
       ))}
-    </ul>
+    </div>
   </div>
 </section>
