@@ -94,20 +94,28 @@ function initArcherVideo(): void {
   }
 
   let shootTimer: number | undefined;
+  let shootInterval: number | undefined;
+  const fireArrow = (): void => {
+    wrap.classList.add('is-shooting');
+    window.setTimeout(() => wrap.classList.remove('is-shooting'), 750);
+  };
   wrap.addEventListener('pointerenter', () => {
     // reiniciar la animación APNG
     const src = anim.src;
     anim.src = '';
     anim.src = src;
     wrap.classList.add('is-playing');
-    // disparar la flecha cuando el arco está tensado (~0.65s)
+    // disparar la flecha cada vez que el arco se tensa (loop de ~2.02s)
     window.clearTimeout(shootTimer);
+    window.clearInterval(shootInterval);
     shootTimer = window.setTimeout(() => {
-      wrap.classList.add('is-shooting');
-    }, 650);
+      fireArrow();
+      shootInterval = window.setInterval(fireArrow, 2016);
+    }, 850);
   });
   wrap.addEventListener('pointerleave', () => {
     window.clearTimeout(shootTimer);
+    window.clearInterval(shootInterval);
     wrap.classList.remove('is-playing', 'is-shooting');
   });
 }
