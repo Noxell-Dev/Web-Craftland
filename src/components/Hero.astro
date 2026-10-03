@@ -1,6 +1,18 @@
 ---
 import { t } from '../i18n/es';
 import { site } from '../data/site';
+
+// Lineas del titulo para el efecto de trazado (delays escalonados por letra)
+const titleLines = [
+  { text: t.hero.titleTop.toUpperCase(), fill: '#F5F5F7', glow: false },
+  { text: t.hero.titleAccent.toUpperCase(), fill: '#E4D2FF', glow: true },
+  { text: t.hero.titleBottom.toUpperCase(), fill: '#F5F5F7', glow: false },
+];
+const drawStagger = 0.055;
+const lineGap = 0.85;
+const drawDuration = 1.1;
+const letterDelay = (li: number, i: number) => (0.35 + li * lineGap + i * drawStagger).toFixed(2);
+const fillDelay = (li: number, len: number) => (0.35 + li * lineGap + len * drawStagger + 0.45).toFixed(2);
 ---
 
 <section class="relative flex min-h-[100svh] items-center overflow-hidden">
@@ -41,20 +53,20 @@ import { site } from '../data/site';
       {t.hero.overline}
     </p>
 
-    <h1 class="hero-in mt-4 max-w-3xl font-display text-4xl leading-[1.08] tracking-wide uppercase sm:text-5xl md:text-7xl" style="--hero-delay: 300ms">
-      {t.hero.titleTop}
-      <span class="block text-grape-400">
-        <span class="sr-only">{t.hero.titleAccent}</span>
-        <span class="stroke-word" aria-hidden="true">
-          <svg viewBox="150 8 620 118" role="img">
-            <text class="st-stroke" x="50%" y="100" text-anchor="middle" style="font:800 118px Anton, Impact, sans-serif; letter-spacing:4px;">
-              <tspan style="animation-delay:.35s">A</tspan><tspan style="animation-delay:.45s">V</tspan><tspan style="animation-delay:.55s">E</tspan><tspan style="animation-delay:.62s">N</tspan><tspan style="animation-delay:.7s">T</tspan><tspan style="animation-delay:.78s">U</tspan><tspan style="animation-delay:.86s">R</tspan><tspan style="animation-delay:.94s">A</tspan>
+    <h1 class="hero-in mt-4 max-w-3xl font-display text-4xl leading-[1.1] uppercase sm:text-5xl md:text-7xl" style="--hero-delay: 300ms">
+      <span class="sr-only">{`${t.hero.titleTop} ${t.hero.titleAccent} ${t.hero.titleBottom}`}</span>
+      <span class="stroke-title" aria-hidden="true">
+        {titleLines.map((line, li) => (
+          <svg viewBox="0 0 900 130" class={line.glow ? 'st-line st-glow' : 'st-line'}>
+            <text class="st-stroke" x="450" y="100" text-anchor="middle" style="font:800 110px Anton, Impact, sans-serif; letter-spacing:3px;">
+              {line.text.split('').map((ch, i) => (
+                <tspan style={`animation-delay:${letterDelay(li, i)}s`}>{ch}</tspan>
+              ))}
             </text>
-            <text class="st-fill" x="50%" y="100" text-anchor="middle" style="font:800 118px Anton, Impact, sans-serif; letter-spacing:4px; animation-delay:1.5s;">AVENTURA</text>
+            <text class="st-fill" x="450" y="100" text-anchor="middle" style={`font:800 110px Anton, Impact, sans-serif; letter-spacing:3px; fill:${line.fill}; animation-delay:${fillDelay(li, line.text.length)}s;`}>{line.text}</text>
           </svg>
-        </span>
+        ))}
       </span>
-      <span class="block">{t.hero.titleBottom}</span>
     </h1>
 
     <p class="hero-in mt-5 max-w-xl text-lg leading-relaxed text-mist-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]" style="--hero-delay: 420ms">

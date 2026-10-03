@@ -202,19 +202,20 @@ html:not(.js) .reveal {
   transition: opacity 500ms ease-in-out;
 }
 
-/* Titulo dibujado a trazo (port vanilla de React Bits StrokeText).
-   La palabra clave se traza con contorno morado y luego se inunda
-   de relleno con un barrido. Solo stroke-dashoffset/opacity/width. */
-.stroke-word { display:flex; justify-content:center; line-height:1.05; }
-.stroke-word svg { display:block; width:auto; height:1em; overflow:visible; }
-.stroke-word .st-stroke { fill:none; stroke:#C9A6FF; stroke-width:3.5; stroke-linejoin:round; stroke-linecap:round; }
-html.js .stroke-word .st-stroke tspan { stroke-dasharray:1200; stroke-dashoffset:1200; animation:strokeDraw 1.3s cubic-bezier(.65,.05,.36,1) forwards; }
-html.js .stroke-word .st-fill { opacity:0; animation:strokeFill .55s ease-out forwards; }
-.stroke-word .st-fill tspan { fill:#E4D2FF; }
-.stroke-word .st-fill { filter:drop-shadow(0 0 18px rgba(180,124,255,.55)); }
+
+
+/* Titulo completo dibujado a trazo (port vanilla de React Bits StrokeText).
+   Trazo letra a letra + fill posterior. Solo dash-offset/opacity: GPU-friendly. */
+.stroke-title { display:flex; flex-direction:column; align-items:center; }
+.stroke-title .st-line { display:block; width:100%; height:1.16em; overflow:visible; }
+.stroke-title .st-stroke { fill:none; stroke:#C9A6FF; stroke-width:3; stroke-linejoin:round; stroke-linecap:round; }
+html.js .stroke-title .st-stroke tspan { stroke-dasharray:1200; stroke-dashoffset:1200; animation:strokeDraw 1.1s cubic-bezier(.65,.05,.36,1) forwards; }
+html.js .stroke-title .st-fill { opacity:0; animation:strokeFill .5s ease-out forwards; }
+.stroke-title .st-fill { user-select:none; }
+.stroke-title .st-glow .st-fill { filter:drop-shadow(0 0 20px rgba(180,124,255,.6)); }
 @keyframes strokeDraw { to { stroke-dashoffset:0; } }
 @keyframes strokeFill { to { opacity:1; } }
 @media (prefers-reduced-motion:reduce) {
-  .stroke-word .st-stroke tspan { stroke-dashoffset:0; animation:none; }
-  .stroke-word .st-fill { opacity:1; animation:none; }
+  html.js .stroke-title .st-stroke tspan { stroke-dashoffset:0; animation:none; }
+  html.js .stroke-title .st-fill { opacity:1; animation:none; }
 }
