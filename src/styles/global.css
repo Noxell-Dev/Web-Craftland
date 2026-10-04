@@ -333,6 +333,21 @@ html:not(.js) [data-split] .split-char {
 }
 
 /* ===== Arquero flotante (hero de Rangos) ===== */
+.ranks-float {
+  animation: ranks-float 6s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes ranks-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ranks-float { animation: none; }
+}
 .archer-float {
   animation: archer-float 5.5s ease-in-out infinite;
   will-change: transform;
