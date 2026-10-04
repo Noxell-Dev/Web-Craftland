@@ -149,8 +149,70 @@ function initTilt(): void {
   });
 }
 
+function initGlare(): void {
+  if (reducedMotion()) return;
+  if (!window.matchMedia('(hover: hover)').matches) return;
+  const cards = document.querySelectorAll<HTMLElement>('[data-glare]');
+  cards.forEach((card) => {
+    let raf = 0;
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        card.style.setProperty('--glare-x', `${Math.round(px * 100)}%`);
+        card.style.setProperty('--glare-y', `${Math.round(py * 100)}%`);
+      });
+    });
+    card.addEventListener('pointerleave', () => {
+      cancelAnimationFrame(raf);
+    });
+  });
+}
+
+function initGalleryAccordion(): void {
+  const gallery = document.querySelector<HTMLElement>('[data-accordion]');
+  if (!gallery) return;
+  const panels = Array.from(gallery.querySelectorAll<HTMLElement>('.ag-panel'));
+  if (panels.length === 0) return;
+
+  const setActive = (index: number): void => {
+    panels.forEach((p, i) => {
+      p.classList.toggle('ag-panel--active', i === index);
+      if (i === index) p.setAttribute('aria-current', 'true');
+      else p.removeAttribute('aria-current');
+    });
+  };
+
+  const canHover = window.matchMedia('(hover: hover)').matches && !reducedMotion();
+
+  panels.forEach((panel, i) => {
+    if (canHover) {
+      panel.addEventListener('pointerenter', () => setActive(i));
+    }
+    panel.addEventListener('click', () => setActive(i));
+    panel.addEventListener('focus', () => setActive(i));
+    panel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = (i + 1) % panels.length;
+        panels[next].focus();
+        setActive(next);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = (i - 1 + panels.length) % panels.length;
+        panels[prev].focus();
+        setActive(prev);
+      }
+    });
+  });
+}
+
 initSplitText();
 initSpotlight();
 initMagnet();
 initArcherVideo();
 initTilt();
+initGlare();
+initGalleryAccordion();

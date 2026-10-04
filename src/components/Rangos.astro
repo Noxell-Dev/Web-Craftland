@@ -4,7 +4,7 @@ import { site } from '../data/site';
 ---
 
 <section id="rangos" class="relative py-24 sm:py-28" aria-labelledby="rangos-title">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+  <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
     <p class="reveal font-mono text-xs uppercase tracking-[0.25em] text-grape-400">{t.ranks.overline}</p>
     <h2 id="rangos-title" data-split class="reveal mt-3 font-display text-4xl tracking-wide text-mist-50 sm:text-5xl">
       {t.ranks.title}
@@ -53,6 +53,7 @@ import { site } from '../data/site';
           {site.ranks.map((rank) => (
             <li
               data-spotlight
+              style={`--spot-color: ${rank.spot}`}
               class:list={[
                 'spotlight-card group relative overflow-hidden rounded-2xl border transition-transform duration-200 hover:-translate-y-1',
                 rank.id === 'vip' && 'border-emerald-500/30 bg-emerald-500/5 p-4',
