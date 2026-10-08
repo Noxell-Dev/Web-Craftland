@@ -3,7 +3,7 @@ import { t } from '../i18n/es';
 import { site } from '../data/site';
 ---
 
-<section id="mapa" class="relative overflow-hidden py-20 sm:py-28" aria-labelledby="mapa-title">
+<section id="mapa" class="relative overflow-hidden bg-gradient-to-b from-night-950 via-[#120a1e] to-night-950 py-20 sm:py-28" aria-labelledby="mapa-title">
   <div class="absolute left-1/2 top-0 h-64 w-[42rem] -translate-x-1/2 rounded-full bg-grape-500/10 blur-3xl" aria-hidden="true"></div>
 
   <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
@@ -17,7 +17,7 @@ import { site } from '../data/site';
       href={site.mapUrl}
       target="_blank"
       rel="noopener"
-      class="reveal group relative mt-10 block overflow-hidden border border-white/10"
+      class="reveal group relative mt-10 block"
       style="--reveal-delay: 120ms"
       aria-label={t.mapa.openCta}
     >
@@ -28,7 +28,7 @@ import { site } from '../data/site';
         height="949"
         loading="lazy"
         decoding="async"
-        class="aspect-video w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+        class="img-feather aspect-video w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-night-950/70 via-transparent to-transparent" aria-hidden="true"></div>
       <div class="absolute inset-x-0 bottom-0 flex justify-center p-6">
