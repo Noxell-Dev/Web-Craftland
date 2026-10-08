@@ -20,12 +20,20 @@ import { site } from '../data/site';
       {t.nav.map((link) => (
         <a
           href={link.href}
-          {...('external' in link && link.external ? { target: '_blank', rel: 'noopener' } : {})}
           class="whitespace-nowrap text-sm font-medium text-mist-400 transition-colors hover:text-mist-50"
         >
           {link.label}
         </a>
       ))}
+      <a
+        href={site.storeUrl}
+        target="_blank"
+        rel="noopener"
+        data-magnet
+        class="whitespace-nowrap bg-grape-500 px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-grape-400 hover:shadow-[0_4px_20px_rgba(138,43,226,0.5)] active:scale-[0.98]"
+      >
+        {t.storeCta}
+      </a>
       <a
         href={site.discordUrl}
         rel="noopener"
@@ -63,12 +71,19 @@ import { site } from '../data/site';
       {t.nav.map((link) => (
         <a
           href={link.href}
-          {...('external' in link && link.external ? { target: '_blank', rel: 'noopener' } : {})}
           class="border-b border-white/5 px-3 py-3 text-base font-medium text-mist-200 transition-colors hover:bg-white/10 hover:text-mist-50"
         >
           {link.label}
         </a>
       ))}
+      <a
+        href={site.storeUrl}
+        target="_blank"
+        rel="noopener"
+        class="mt-3 bg-grape-500 px-4 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-grape-400"
+      >
+        {t.storeCta}
+      </a>
       <a
         href={site.discordUrl}
         rel="noopener"

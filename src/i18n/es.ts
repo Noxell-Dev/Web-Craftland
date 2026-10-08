@@ -11,12 +11,12 @@ export const t = {
   nav: [
     { label: 'Modalidades', href: '/#modalidades' },
     { label: 'Rangos', href: '/#rangos' },
-    { label: 'Mapa', href: '/mapa' },
-    { label: 'Tienda', href: 'https://store.craftlandmc.com', external: true },
+    { label: 'Mapa', href: '/#mapa' },
     { label: 'Cómo entrar', href: '/#como-entrar' },
     { label: 'Comunidad', href: '/#comunidad' },
   ],
   joinCta: 'Unirme al servidor',
+  storeCta: 'Tienda',
   openMenu: 'Abrir menú de navegación',
   closeMenu: 'Cerrar menú de navegación',
 
