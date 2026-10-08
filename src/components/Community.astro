@@ -64,5 +64,30 @@ import { site } from '../data/site';
         </a>
       </div>
     </div>
+    <!-- Banner TikTok -->
+    <div class="reveal relative mt-6 overflow-hidden" style="--reveal-delay: 280ms">
+      <div class="absolute inset-0 bg-gradient-to-r from-night-800 via-night-900 to-night-800" aria-hidden="true"></div>
+      <div class="absolute inset-0 border border-white/10" aria-hidden="true"></div>
+
+      <div class="relative flex flex-col items-center gap-6 p-10 text-center sm:flex-row sm:gap-10 sm:p-12 sm:text-left">
+        <div class="flex h-16 w-16 shrink-0 items-center justify-center bg-night-950">
+          <svg class="h-8 w-8 text-mist-50" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-display text-2xl tracking-wide text-mist-50 sm:text-3xl">{t.community.tiktokTitle}</h3>
+          <p class="mx-auto mt-3 max-w-xl text-mist-300 sm:mx-0">{t.community.tiktokDescription}</p>
+        </div>
+        <a
+          href={site.tiktokUrl}
+          target="_blank"
+          rel="noopener"
+          class="inline-block shrink-0 bg-mist-50 px-10 py-4 font-bold text-night-950 transition-all hover:bg-white hover:shadow-[0_8px_32px_rgba(255,255,255,0.25)] active:translate-y-px"
+        >
+          {t.community.tiktokCta}
+        </a>
+      </div>
+    </div>
   </div>
 </section>

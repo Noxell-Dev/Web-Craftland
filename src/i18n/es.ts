@@ -11,9 +11,10 @@ export const t = {
   nav: [
     { label: 'Modalidades', href: '/#modalidades' },
     { label: 'Rangos', href: '/#rangos' },
+    { label: 'Mapa', href: '/mapa' },
+    { label: 'Tienda', href: 'https://store.craftlandmc.com', external: true },
     { label: 'Cómo entrar', href: '/#como-entrar' },
     { label: 'Comunidad', href: '/#comunidad' },
-    { label: 'Preguntas', href: '/#faq' },
   ],
   joinCta: 'Unirme al servidor',
   openMenu: 'Abrir menú de navegación',
@@ -79,7 +80,7 @@ export const t = {
       {
         n: '02',
         title: 'Añade el servidor',
-        description: 'Multijugador → Añadir servidor → pega la IP: play.craftlandmc.com',
+        description: 'Multijugador → Añadir servidor → pega la IP: play.craftlandmc.com · Java puerto 25565 · Bedrock puerto 19132',
       },
       {
         n: '03',
@@ -129,6 +130,9 @@ export const t = {
     discordTitle: 'Únete al Discord',
     discordDescription: 'Anuncios, soporte, eventos y gente con la que jugar. Nos vemos dentro.',
     discordCta: 'Entrar al Discord',
+    tiktokTitle: 'Síguenos en TikTok',
+    tiktokDescription: 'Clips, eventos y lo mejor de la comunidad. ¡No te lo pierdas!',
+    tiktokCta: 'Seguir en TikTok',
     stats: [
       { value: '+50', label: 'jugadores diarios', count: 50 },
       { value: '24/7', label: 'servidor online' },
@@ -182,5 +186,19 @@ export const t = {
     title: 'Chunk no generado',
     body: 'La página que buscas no existe… o se ha caído al vacío.',
     cta: 'Volver al spawn',
+  },
+
+  mapa: {
+    overline: 'Survival · Mapa interactivo',
+    title: 'Explora el mundo sin entrar al juego',
+    subtitle:
+      'El mapa completo del Survival en tu navegador: zoom, coordenadas, jugadores en tiempo real y todos los puntos de interés marcados.',
+    openCta: 'Abrir el mapa',
+    openNote: 'Se abre en una pestaña nueva',
+    features: [
+      { title: 'Tiempo real', description: 'Ve dónde están los jugadores conectados ahora mismo.' },
+      { title: 'Puntos de interés', description: 'Spawns, tiendas, warps y construcciones destacadas.' },
+      { title: 'Coordenadas', description: 'Encuentra cualquier punto y ve directo sin perderte.' },
+    ],
   },
 } as const;

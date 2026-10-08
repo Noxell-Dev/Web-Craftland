@@ -20,6 +20,7 @@ import { site } from '../data/site';
       {t.nav.map((link) => (
         <a
           href={link.href}
+          {...('external' in link && link.external ? { target: '_blank', rel: 'noopener' } : {})}
           class="whitespace-nowrap text-sm font-medium text-mist-400 transition-colors hover:text-mist-50"
         >
           {link.label}
@@ -62,7 +63,8 @@ import { site } from '../data/site';
       {t.nav.map((link) => (
         <a
           href={link.href}
-          class="rounded-2xl px-3 py-3 text-base font-medium text-mist-200 hover:bg-white/10"
+          {...('external' in link && link.external ? { target: '_blank', rel: 'noopener' } : {})}
+          class="border-b border-white/5 px-3 py-3 text-base font-medium text-mist-200 transition-colors hover:bg-white/10 hover:text-mist-50"
         >
           {link.label}
         </a>
