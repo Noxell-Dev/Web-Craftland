@@ -658,9 +658,3 @@ html:not(.js) [data-split] .split-char {
     display: none;
   }
 }
-
-/* Bordes difuminados para imágenes que se funden con el fondo */
-.img-feather {
-  -webkit-mask-image: radial-gradient(ellipse 95% 95% at 50% 50%, black 62%, transparent 98%);
-  mask-image: radial-gradient(ellipse 95% 95% at 50% 50%, black 62%, transparent 98%);
-}
