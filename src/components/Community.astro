@@ -14,18 +14,18 @@ import { site } from '../data/site';
     </div>
 
     <!-- Stats en fila -->
-    <dl class="reveal mx-auto mt-10 grid max-w-3xl grid-cols-3 gap-6 text-center" style="--reveal-delay: 120ms">
+    <dl class="reveal mx-auto mt-10 grid max-w-3xl grid-cols-3 gap-3 text-center sm:gap-6" style="--reveal-delay: 120ms">
       {t.community.stats.map((stat) => (
-        <div class="rounded-2xl border border-white/10 bg-night-800/60 p-6 backdrop-blur-sm">
+        <div class="rounded-2xl border border-white/10 bg-night-800/60 p-4 backdrop-blur-sm sm:p-6">
           <dd
-            class="font-display text-4xl text-grape-300 sm:text-5xl"
+            class="font-display text-3xl text-grape-300 sm:text-5xl"
             {...(stat.count !== undefined
               ? { 'data-count-up': String(stat.count), 'data-count-prefix': stat.value.startsWith('+') ? '+' : '' }
               : {})}
           >
             {stat.value}
           </dd>
-          <dt class="mt-2 text-sm text-mist-400">{stat.label}</dt>
+          <dt class="mt-2 text-xs text-mist-400 sm:text-sm">{stat.label}</dt>
         </div>
       ))}
     </dl>

@@ -8,15 +8,15 @@ export const site = {
   locale: 'es_ES',
   language: 'es',
   description:
-    'Servidor de Minecraft Survival, Creativo y Skyblock. Compatible con Java desde 1.8 hasta 1.26. Únete a la comunidad en play.craftlandmc.com.',
+    'Servidor de Minecraft Survival, Creativo y Skyblock. Compatible con Java desde 1.21 hasta 26.3. Únete a la comunidad en play.craftlandmc.com.',
   serverIp: 'play.craftlandmc.com',
   javaPort: '25565',
   bedrockPort: '19132',
-  discordUrl: 'https://discord.gg/rvfmDv5dcU',
+  discordUrl: 'https://discord.gg/craftlandmc',
   tiktokUrl: 'https://www.tiktok.com/@craftland.minecraft',
   storeUrl: 'https://store.craftlandmc.com',
   mapUrl: 'https://mapa.craftlandmc.com',
-  versions: 'Java 1.8 – 1.26',
+  versions: 'Java 1.21 - 26.3',
   modes: [
     { id: 'survival', label: 'Survival' },
     { id: 'creativo', label: 'Creativo' },

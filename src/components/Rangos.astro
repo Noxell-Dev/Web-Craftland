@@ -42,10 +42,10 @@ import { site } from '../data/site';
                 rank.id === 'vip' && 'border-emerald-500/30 bg-emerald-500/5 p-4',
                 rank.id === 'heroe' && 'border-sky-500/40 bg-sky-500/10 p-5',
                 rank.id === 'leyenda' && 'border-amber-500/50 bg-amber-500/10 p-6',
-                rank.id === 'eterno' && 'border-rose-500/60 bg-gradient-to-br from-rose-500/25 via-rose-500/10 to-transparent p-7',
+                rank.id === 'eterno' && 'border-rose-500/60 bg-gradient-to-br from-rose-500/25 via-rose-500/10 to-transparent p-5 sm:p-7',
               ]}
             >
-              <div class="flex items-center justify-between gap-4">
+              <div class="flex flex-wrap items-center justify-between gap-4">
                 <div class="flex items-center gap-4">
                   <img
                     src={`/images/ranks/${rank.id}.webp`}
@@ -60,7 +60,7 @@ import { site } from '../data/site';
                       rank.id === 'vip' && 'h-10 w-10',
                       rank.id === 'heroe' && 'h-12 w-12',
                       rank.id === 'leyenda' && 'h-14 w-14',
-                      rank.id === 'eterno' && 'h-16 w-16',
+                      rank.id === 'eterno' && 'h-12 w-12 sm:h-16 sm:w-16',
                     ]}
                   />
                   <div>
@@ -69,7 +69,7 @@ import { site } from '../data/site';
                       rank.id === 'vip' && 'text-lg text-emerald-300',
                       rank.id === 'heroe' && 'text-xl text-sky-300',
                       rank.id === 'leyenda' && 'text-2xl text-amber-300',
-                      rank.id === 'eterno' && 'text-3xl text-rose-200',
+                      rank.id === 'eterno' && 'text-2xl text-rose-200 sm:text-3xl',
                     ]}>
                       {rank.id === 'eterno' ? <span data-shiny>{rank.label}</span> : rank.label}
                     </p>

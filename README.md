@@ -1,6 +1,6 @@
 # Craftland · Web del servidor
 
-Landing page de **Craftland**, servidor de Minecraft (Java 1.8 – 1.26) con
+Landing page de **Craftland**, servidor de Minecraft (Java 1.21 - 26.3) con
 modalidades Survival, Creativo y Skyblock: IP copiable, guía de acceso,
 comunidad en Discord y preguntas frecuentes.
 
